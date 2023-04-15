@@ -1,0 +1,20 @@
+[tool.pdm]
+
+[project]
+name = ""
+version = ""
+description = ""
+authors = [
+    {name = "levch", email = "levchenko.d.a1998@gmail.com"},
+]
+dependencies = [
+    "aiogram>=2.25.1",
+    "aiogram-tools>=0.5",
+    "mongoengine>=0.27.0",
+    "Pillow>=9.5.0",
+    "motor>=3.1.2",
+    "python-dotenv>=1.0.0",
+    "cloudipsp>=1.0.4",
+]
+requires-python = ">=3.10"
+license = {text = "MIT"}
