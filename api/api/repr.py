@@ -1,6 +1,7 @@
 import re
 
-from . import models, texts
+from . import models
+from .texts import texts
 from .helpers import safe_html
 
 

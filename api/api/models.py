@@ -59,7 +59,6 @@ class Order(Document):
     date: int = IntField()
     ad: Ad = EmbeddedDocumentField(Ad)
     price: int = IntField()
-    created_from: str = StringField()
     channel_id: int = IntField()
 
     paid_up: bool = BooleanField(default=False)

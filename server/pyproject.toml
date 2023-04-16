@@ -1,0 +1,25 @@
+[project]
+name = ""
+version = ""
+description = ""
+authors = []
+dependencies = [
+    "aiohttp>=3.8.4",
+    "aiogram-ext>=0.0.14",
+]
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+[tool.pdm.dev-dependencies]
+dev = ["-e file:///${PROJECT_ROOT}/../api#egg=api"]
+
+[tool.pdm.scripts._]
+env_file = "../.env"
+env = { PYTHONPATH = "src" }
+
+[tool.pdm.scripts]
+start = "python src"
+test = "python tests"
+
+[tool.ruff]
+ignore = ["F401"]

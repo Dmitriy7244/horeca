@@ -9,7 +9,6 @@ from botty import (
 from api import (
     SUPPORT_URL,
     OUR_SITE_URL,
-    OTHER_LANG_BOT_URL,
     PRICES,
     texts,
     config,
@@ -23,7 +22,7 @@ class Main(InlineKeyboard):
     MY_ADS = CallbackButton(texts.MY_ADS)
     SUPPORT = UrlButton(texts.SUPPORT, SUPPORT_URL)
     OUR_SITE = UrlButton(texts.OUR_SITE, OUR_SITE_URL)
-    OTHER_LANG_BOT = UrlButton(texts.OTHER_LANG_BOT, OTHER_LANG_BOT_URL)
+    OTHER_LANG_BOT = UrlButton(texts.OTHER_LANG_BOT, config.pair_bot_url)
 
     buttons = [CREATE_AD, MY_ADS, SUPPORT, OUR_SITE, OTHER_LANG_BOT]
     row_width = 2

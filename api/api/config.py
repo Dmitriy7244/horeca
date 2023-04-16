@@ -8,8 +8,9 @@ SUPPORT_URL = "https://t.me/LFeedbackBot"
 AD_PHOTO_RATIO = 4 / 3
 ADMINS_IDS = env.get_ints("ADMINS_IDS")
 ADMIN_GROUP = env.get_int("ADMIN_GROUP")
-BOT_URI = env.get("BOT_URI")
-OTHER_LANG_BOT_URL = env.get("OTHER_LANG_BOT_URL")
+BASE_URL = env.get("BASE_URL")
+PAYMENT_ENDPOINT = "/payment"
+PAYMENT_URL = BASE_URL + PAYMENT_ENDPOINT
 
 
 class PRICES:
@@ -22,7 +23,6 @@ class MERCHANT:
     _ = "MERCHANT_"
     ID = env.get_int(_ + "ID")
     SECRET_KEY = env.get(_ + "SECRET_KEY")
-    CALLBACK_URL = env.get(_ + "CALLBACK_URL")
 
 
 class MONGO:
@@ -40,6 +40,7 @@ class Region(BaseModel):
 
 class Config(BaseModel):
     regions: dict[str, Region]
+    pair_bot_url: str
 
     def get_cities(self, region: str) -> list[str]:
         return [region, *self.regions[region].cities]

@@ -4,17 +4,16 @@ from cloudipsp import Api, Checkout
 from cloudipsp.configuration import __protocol__
 from cloudipsp.helpers import is_approved
 
-from .config import MERCHANT
-
-from . import texts
+from .texts import texts
+from .config import MERCHANT, PAYMENT_URL
 from .loader import logger
 
 
 class Merchant:
-    def __init__(self, _id: int, secret_key: str, callback_url: str):
-        self.api = Api(merchant_id=_id, secret_key=secret_key)
+    def __init__(self):
+        self.api = Api(merchant_id=MERCHANT.ID, secret_key=MERCHANT.SECRET_KEY)
         self.checkout = Checkout(api=self.api)
-        self.callback_url = callback_url
+        self.callback_url = PAYMENT_URL
 
     async def get_invoice_url(self, order_id: str, price: int, bot_url: str):
         data = {
@@ -41,8 +40,4 @@ def run(func):
     return loop.run_in_executor(None, func)
 
 
-merchant = Merchant(
-    MERCHANT.ID,
-    MERCHANT.SECRET_KEY,
-    MERCHANT.CALLBACK_URL,
-)
+merchant = Merchant()
