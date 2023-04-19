@@ -1,2 +1,2 @@
 def setup():
-    from . import start, create_ad
+    from . import start, create_ad, admin

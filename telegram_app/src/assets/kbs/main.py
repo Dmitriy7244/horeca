@@ -130,3 +130,11 @@ class Invoice(InlineKeyboard):
     def __init__(self, url: str):
         button = UrlButton(texts.PAY, url)
         super().__init__(button)
+
+
+class ApproveAd(InlineKeyboard):
+    BUTTON = CallbackButton("✅", "ApproveAd:{order_id}")
+
+    def __init__(self, order_id: str):
+        button = self.BUTTON.format(order_id=order_id)
+        super().__init__(button)

@@ -15,12 +15,13 @@ dependencies = [
 
 [[package]]
 name = "aiogram-ext"
-version = "0.0.17"
+version = "0.0.25"
 requires_python = ">=3.10"
 summary = ""
 dependencies = [
     "aiogram>=2.25.1",
     "motor>=3.1.2",
+    "parsenv>=0.1.3",
 ]
 
 [[package]]
@@ -254,9 +255,9 @@ content_hash = "sha256:5334bc216eb3b8cd81fccf19e26f9d258503043daf5c12e225f374cd5
     {url = "https://files.pythonhosted.org/packages/c1/68/1c41d0245849af98250058dd1f702c56025c9fb4e19fe07158283852bbc0/aiogram-2.25.1-py3-none-any.whl", hash = "sha256:7bb770cd0459f1dbaea00578bf13fb2e6a1812f22adf94a988c11a7c0d5f33e1"},
     {url = "https://files.pythonhosted.org/packages/c1/6b/adbb9409f7af5deaeb461e76a553ae1640f86dd60ae3ca5939abb03dd844/aiogram-2.25.1.tar.gz", hash = "sha256:59ad78fc0ebbef1fd471c15778a4594b60117e0d7373bc2ce7bcd192074d527d"},
 ]
-"aiogram-ext 0.0.17" = [
-    {url = "https://files.pythonhosted.org/packages/ab/e2/d7cfc6198a80fe38db643364b8422f5bf0cbc23256878d508966db863dc2/aiogram_ext-0.0.17-py3-none-any.whl", hash = "sha256:d886bc2bdeb2ca286d1cf0b9662465306d8ae98b1d637fc195ee78c4559548b5"},
-    {url = "https://files.pythonhosted.org/packages/da/e5/ec231286d158c7842feed6503a49665ebf842bdc3a3134ac56608d2ec94c/aiogram-ext-0.0.17.tar.gz", hash = "sha256:f1b5578581cf70641ed0336adad9b96b2444d7119b0708a852eb155ee43a49f6"},
+"aiogram-ext 0.0.25" = [
+    {url = "https://files.pythonhosted.org/packages/21/fb/2cb282ac6693f86088546e7bbcf4f3cb35b3dd550781e8af4dc92df287b6/aiogram_ext-0.0.25-py3-none-any.whl", hash = "sha256:219f8371fe2cff55cabde81d454ff86cfef9fb542be8edf4dd969ca0ef82fa5c"},
+    {url = "https://files.pythonhosted.org/packages/88/3b/da67e551c3dfda215b70559ec92956f1411e116e330fae68b25ccc51f501/aiogram-ext-0.0.25.tar.gz", hash = "sha256:cc75250f6d32c8b9d50d25b4b524c53dd12be75ca00ed99e0a4af262eb84c984"},
 ]
 "aiohttp 3.8.4" = [
     {url = "https://files.pythonhosted.org/packages/03/e7/84b65e341b1f45753fea51158d8a9522e57a5ae804acbc6dc34edf07cea0/aiohttp-3.8.4-cp39-cp39-musllinux_1_1_aarch64.whl", hash = "sha256:bca5f24726e2919de94f047739d0a4fc01372801a3672708260546aa2601bf57"},

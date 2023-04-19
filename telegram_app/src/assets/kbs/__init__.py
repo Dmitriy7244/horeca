@@ -13,6 +13,7 @@ from .main import (
     EditVacancy,
     EditOtherInfo,
     Invoice,
+    ApproveAd,
 )
 
 MAIN = Main()

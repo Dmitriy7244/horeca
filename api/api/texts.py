@@ -78,6 +78,10 @@ class Texts:
     POST_DATE = _[72]
     ASK_ITEM_TO_EDIT = _[73]
     PAY = _[74]
+    ORDER_NOT_FOUND = _[75]
+    ORDER_PUBLISHED = _[76]
+    PAYMENT_SUCCESS = _[77]
+    NEW_ORDER = _[78]
 
 
 texts = Texts()

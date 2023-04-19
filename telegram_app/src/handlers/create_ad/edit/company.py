@@ -7,7 +7,7 @@ Kb = kbs.EditCompany
 
 
 def on(button: str):
-    return dp.text(button, CreateAdStates.EDIT)
+    return dp.text(button).state(CreateAdStates.EDIT)
 
 
 @on(Kb.CITY)

@@ -1,39 +1,25 @@
-from contextlib import suppress
+from api import Order, approve_order, ADMIN_GROUP, texts
+from botty import Message, reply, dp, Query, TelegramAPIError
 
-import api
-from aiogram import types
-from aiogram.utils.exceptions import TelegramAPIError
-from aiogram_tools.context import message, callback_query as cquery
-from models.ad import Order
-
-from ... import config
-from ... import kbs as kb
-from ...loader import dp
+from assets import kbs
+from core import suppress
 
 
-@dp.message_handler(chat_id=config.ADMIN_GROUP, is_reply=True)
-async def update_ad_text(_, reply: types.Message):
-    await message.answer(message.html_text, reply_markup=reply.reply_markup)
-
-    try:
-        await reply.delete()
-        await message.delete()
-    except TelegramAPIError:
-        await message.answer("Не получилось удалить изначальное сообщение")
+@dp.TEXT.chat_id(ADMIN_GROUP).extra(is_reply=True)
+async def _edit_ad(msg: Message):
+    replied_msg = msg.reply_to_message
+    await reply(msg, msg.html_text, replied_msg.reply_markup)
+    with suppress(TelegramAPIError):
+        await msg.delete()
+        await replied_msg.delete()
 
 
-@dp.callback_query_handler(chat_id=config.ADMIN_GROUP, button=kb.ModerateAd.ACCEPT)
-async def post_ad(_, button: dict):
-    order: Order = Order.objects(id=button["order_id"]).first()
-
+@dp.button(kbs.ApproveAd.BUTTON).chat_id(ADMIN_GROUP)
+async def _approve_order(query: Query, button: dict):
+    msg = query.message
+    order = Order.get_doc(button["order_id"])
     if not order:
-        return await message.answer("Ошибка, заказ не найден")
-
-    api.orders.init_order(order, message.html_text)
-
-    await message.edit_reply_markup(None)
-    await cquery.answer("Объявление опубликовано")
-
-    with suppress(Exception):
-        app = api.orders.get_app_for_order(order)
-        await app.dp.bot.send_message(order.user_id, app.texts.order_approved)
+        return await reply(msg, texts.ORDER_NOT_FOUND)
+    # await msg.edit_reply_markup(None)  # TODO
+    await query.answer(texts.ORDER_PUBLISHED)
+    approve_order(order)

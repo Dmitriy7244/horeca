@@ -13,7 +13,7 @@ from lib import (
 
 
 def on(state: State, button: str = None):
-    return dp.text(button, state)
+    return dp.text(button).state(state)
 
 
 @on(States.REGION, kbs.Region.buttons)

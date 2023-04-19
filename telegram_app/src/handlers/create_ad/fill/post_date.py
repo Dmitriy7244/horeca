@@ -6,7 +6,7 @@ from lib import check_edit_mode, AdProxy, ask_duplicate_option
 
 
 def on(button: str = None):
-    return dp.text(button, CreateAdStates.POST_DATE)
+    return dp.text(button).state(CreateAdStates.POST_DATE)
 
 
 @on(kbs.Skip.BUTTON)

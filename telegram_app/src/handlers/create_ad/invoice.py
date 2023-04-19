@@ -1,41 +1,26 @@
-import time
-
-from api import models, PRICES, merchant, repr_invoice
+import api
+from api import repr_invoice, Order, Invoice, get_invoice_url
 from botty import Message, dp, reply, bot
 
 from assets import kbs, CreateAdStates
 from lib import AdProxy, get_channel_id_for_ad
 
 
-@dp.text(kbs.EditAd.DONE, CreateAdStates.EDIT)
+@dp.text(kbs.EditAd.DONE).state(CreateAdStates.EDIT)
 async def _(msg: Message):
     invoice = await make_invoice()
     order = await make_order(msg, invoice)
-
     # await state.finish() # TODO
-    url = await merchant.get_invoice_url(str(order.id), order.price, await bot.url)
+    url = await get_invoice_url(order, await bot.url)
     await reply(msg, repr_invoice(invoice), kbs.Invoice(url))
 
 
-async def make_invoice() -> models.Invoice:
-    async with AdProxy() as ad:
-        vacancy_amount = len(ad.vacancies)
-        pin = ad.extra_info.pin
-        duplicate = ad.extra_info.duplicate
-
-    vacancies_price = PRICES.VACANCIES[vacancy_amount]
-    pin_price = PRICES.PIN_OPTION if pin else 0
-    duplicate_price = PRICES.DUPLICATE_OPTION[vacancy_amount] if duplicate else 0
-    return models.Invoice(vacancies_price, pin_price, duplicate_price)
-
-
-async def make_order(msg, invoice: models.Invoice) -> models.Order:
+async def make_invoice() -> Invoice:
     ad = await AdProxy().ad
-    order = models.Order(
-        user_id=str(msg.from_user.id),
-        ad=ad,
-        date=time.time(),
-        price=invoice.total_price,
-        channel_id=await get_channel_id_for_ad(),
-    )
-    return order.save()
+    return api.make_invoice(ad)
+
+
+async def make_order(msg: Message, invoice: Invoice) -> Order:
+    ad = await AdProxy().ad
+    channel_id = await get_channel_id_for_ad()
+    return api.make_order(ad, channel_id, msg.from_user.id, invoice)

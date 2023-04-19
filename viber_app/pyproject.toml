@@ -1,0 +1,18 @@
+[project]
+name = ""
+version = ""
+description = ""
+authors = [{ name = "levch", email = "levchenko.d.a1998@gmail.com" }]
+dependencies = [
+    "async-viber>=0.1.0",
+]
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+[tool.pdm.scripts._]
+env = { PYTHONPATH = "src" }
+
+[tool.pdm.scripts]
+ru = { cmd = "python src", env_file = "../viber-ru.env" }
+ua = { cmd = "python src", env_file = "../viber-ua.env" }
+test = "python tests"

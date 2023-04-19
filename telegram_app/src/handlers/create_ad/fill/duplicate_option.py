@@ -5,7 +5,7 @@ from lib import AdProxy, ask_ad_edit
 
 
 def on(button: str):
-    return dp.text(button, CreateAdStates.DUPLICATE_OPTION)
+    return dp.text(button).state(CreateAdStates.DUPLICATE_OPTION)
 
 
 @on(kbs.DuplicateOption.YES)

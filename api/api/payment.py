@@ -1,17 +1,17 @@
-from aiohttp.web import Response, Request
+from aiohttp.web import Request
 
 from .merchant import merchant
 from .models import Order
 
 
-async def on_payment(request: Request) -> Response:
+async def on_payment(request: Request) -> Order:
     data: dict = await request.json()
     if merchant.check_payment(data):
-        order = Order.objects(id=data["order_id"]).first()
+        order = Order.get_doc(data["order_id"])
         if order:
-            order.paid_up = True
+            order.paid = True
             order.save()
-            return Response()
+            return order
     raise PaymentError(data)
 
 

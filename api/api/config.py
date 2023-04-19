@@ -6,11 +6,12 @@ MAX_ANSWER_LEN = 150
 OUR_SITE_URL = "https://horeca-job.com.ua/"
 SUPPORT_URL = "https://t.me/LFeedbackBot"
 AD_PHOTO_RATIO = 4 / 3
-ADMINS_IDS = env.get_ints("ADMINS_IDS")
+ADMIN_IDS = env.get_ints("ADMIN_IDS")  # TODO: remove
 ADMIN_GROUP = env.get_int("ADMIN_GROUP")
-BASE_URL = env.get("BASE_URL")
+APP_URL = env.get("APP_URL")
+APP_ID = env.get("APP_ID")
 PAYMENT_ENDPOINT = "/payment"
-PAYMENT_URL = BASE_URL + PAYMENT_ENDPOINT
+PAYMENT_URL = APP_URL + PAYMENT_ENDPOINT
 
 
 class PRICES:
@@ -49,5 +50,7 @@ class Config(BaseModel):
         return self.regions[region].channel
 
 
-with open("../config.yml", encoding="utf8") as stream:
+_CONFIG_PATH = env.get("CONFIG_PATH")
+
+with open(_CONFIG_PATH, encoding="utf8") as stream:
     config = Config(**yaml.safe_load(stream))

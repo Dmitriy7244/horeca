@@ -6,7 +6,7 @@ from lib import check_edit_mode, ask_phone, AdProxy
 
 
 def on(button: str = None):
-    return dp.text(button, CreateAdStates.EXTRA_INFO)
+    return dp.text(button).state(CreateAdStates.EXTRA_INFO)
 
 
 @on(kbs.Skip.BUTTON)

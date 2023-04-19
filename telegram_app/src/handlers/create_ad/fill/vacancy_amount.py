@@ -4,7 +4,7 @@ from assets import kbs, CreateAdStates as States, Keys
 from lib import ask_vacancy_title
 
 
-@dp.text(kbs.VacancyAmount.BUTTON, States.VACANCY_AMOUNT)
+@dp.text(kbs.VacancyAmount.BUTTON).state(States.VACANCY_AMOUNT)
 async def _(msg: Message, state: FSMContext, button: dict):
     amount = int(button["amount"])
     session = {Keys.VACANCY_AMOUNT: amount, Keys.VACANCY_NUM: 1}

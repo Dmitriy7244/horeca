@@ -2,7 +2,6 @@ from dataclasses import dataclass
 
 from mongoengine import (
     BooleanField,
-    Document,
     EmbeddedDocument,
     EmbeddedDocumentField,
     EmbeddedDocumentListField,
@@ -10,6 +9,8 @@ from mongoengine import (
     ListField,
     StringField,
 )
+
+from .core import Document
 
 
 class CompanyInfo(EmbeddedDocument):
@@ -60,8 +61,10 @@ class Order(Document):
     ad: Ad = EmbeddedDocumentField(Ad)
     price: int = IntField()
     channel_id: int = IntField()
+    utm: str = StringField()  # TODO
+    notified: bool = BooleanField()
 
-    paid_up: bool = BooleanField(default=False)
+    paid: bool = BooleanField(default=False, db_field="paid_up")
     approved: bool = BooleanField(default=False)
     pinned: bool = BooleanField()
     final_ad_text: str | None = StringField()

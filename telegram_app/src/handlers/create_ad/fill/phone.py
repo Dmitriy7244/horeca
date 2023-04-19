@@ -7,12 +7,12 @@ from lib import check_edit_mode, ask_photo, AdProxy
 STATE = CreateAdStates.PHONE
 
 
-@dp.text(state=STATE)
+@dp.TEXT.state(STATE)
 def _(msg: Message, state: FSMContext):
     return callback(msg, state, msg.text)
 
 
-@dp.contact(state=STATE)
+@dp.CONTACT.state(STATE)
 def _(msg: Message, state: FSMContext):
     return callback(msg, state, msg.contact.phone_number)
 

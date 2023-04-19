@@ -5,7 +5,7 @@ from lib import check_edit_mode, ask_post_date, AdProxy
 
 
 def on(button: str):
-    return dp.text(button, CreateAdStates.PIN_OPTION)
+    return dp.text(button).state(CreateAdStates.PIN_OPTION)
 
 
 @on(kbs.PinOption.YES)

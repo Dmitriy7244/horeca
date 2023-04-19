@@ -16,7 +16,7 @@ from lib import (
 
 
 def on(state: State):
-    return dp.text(state=state)
+    return dp.TEXT.state(state)
 
 
 @on(States.TITLE)
