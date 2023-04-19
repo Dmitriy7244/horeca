@@ -82,6 +82,7 @@ class Texts:
     ORDER_PUBLISHED = _[76]
     PAYMENT_SUCCESS = _[77]
     NEW_ORDER = _[78]
+    ABOUT_US = _[79]
 
 
 texts = Texts()
