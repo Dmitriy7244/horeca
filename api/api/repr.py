@@ -32,22 +32,23 @@ def repr_vacancy(vacancy: models.Vacancy):
     )
 
 
-def repr_extra_info(info: models.ExtraInfo):
+def repr_extra_info(info: models.ExtraInfo, with_photo: bool):
+    photo = texts.HIDDEN_URL.format(info.photo) if with_photo else ""
     text = texts.OTHER_INFO_REPR.format(
         additional_info=info.extra_info,
-        photo=info.photo,
+        photo=photo,
         contact_phone=info.phone,
     )
     return text.strip()
 
 
-def repr_ad(ad: models.Ad):
+def repr_ad(ad: models.Ad, with_photo=True):
     text = texts.AD_REPR.format(
         company_info=repr_company_info(ad.company_info),
         vacancies="\n\n".join([repr_vacancy(v) for v in ad.vacancies]),
-        extra_info=repr_extra_info(ad.extra_info),
+        extra_info=repr_extra_info(ad.extra_info, with_photo),
     )
-    return safe_html(text)
+    return safe_html(text.replace("\n" * 2, "\n"))
 
 
 def repr_invoice(invoice: models.Invoice):

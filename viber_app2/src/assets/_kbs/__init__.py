@@ -1,6 +1,17 @@
-from .create_ad import Region, Cities
-from .main import MenuButton, Main
-
-REGION = Region()
-MENU_BUTTON = MenuButton()
-MAIN = Main()
+from .change_ad import (
+    ChangeAd,
+    BACK_BUTTON,
+    ChangeVacancy,
+    ChangeExtraInfo,
+    ChangeCompanyInfo,
+)
+from .create_ad import (
+    Region,
+    Cities,
+    VacancyAmount,
+    ContactRequest,
+    PinOption,
+    DuplicateOption,
+)
+from .main import Main
+from .misc import Skip, Payment

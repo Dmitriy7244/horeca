@@ -30,12 +30,12 @@ class Vacancy(EmbeddedDocument):
 
 
 class ExtraInfo(EmbeddedDocument):
-    extra_info = StringField(db_field="additional_info")  # TODO
+    extra_info: str = StringField(db_field="additional_info")  # TODO
     phone: str = StringField(db_field="contact_phone")
-    photo = StringField()
-    pin = BooleanField()
-    duplicate = BooleanField()
-    post_date = IntField()
+    photo: str = StringField()
+    pin: bool = BooleanField()
+    duplicate: bool = BooleanField()
+    post_date: int = IntField()
 
 
 class Ad(EmbeddedDocument):

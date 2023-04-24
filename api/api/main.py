@@ -37,7 +37,7 @@ def check_answer_len(text: str):
 
 
 def crop_photo(url: str) -> str:  # TODO
-    return url
+    return url and "https://telegra.ph/file/334f0f0dc80e933f61a8c.jpg"
 
 
 def check_for_digits(text: str):

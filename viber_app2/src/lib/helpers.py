@@ -1,9 +1,12 @@
-from api import texts
-from viber import Message, FSMContext, reply
+from viber import Message, CancelHandler, FSMContext
 
-from assets import kbs
+from assets import Keys
+from .questions import ask_ad_edit
 
 
-async def send_menu(msg: Message, state: FSMContext):
-    await state.finish()
-    await reply(msg, texts.MENU, kbs.MAIN)
+async def check_edit_mode(msg: Message, state: FSMContext):
+    session = await state.get_data()
+    if not session.get(Keys.EDIT_MODE):
+        return
+    await ask_ad_edit(msg)
+    raise CancelHandler

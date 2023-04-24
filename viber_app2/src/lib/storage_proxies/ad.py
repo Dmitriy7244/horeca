@@ -1,26 +1,27 @@
 import json
 
-from api.models import Ad, CompanyInfo, Vacancy, ExtraInfo, CreateAdKeys
+from api.models import Ad, CompanyInfo, Vacancy, ExtraInfo
 from viber import Dispatcher
 
+from assets import Keys
 
-def storage():
+
+def get_storage():
     return Dispatcher.get_current().current_state()
 
 
 class _AdProxy:
-
     @property
     async def ad(self):
         if self._ad is None:
-            storage_data = await storage().get_data()
-            self._ad = Ad(**storage_data.get('ad', {}))
+            storage_data = await get_storage().get_data()
+            self._ad = Ad(**storage_data.get("ad", {}))
         return self._ad
 
     @staticmethod
     async def set_ad(ad: Ad):
         json_dict = json.loads(ad.to_json())
-        await storage().update_data({'ad': json_dict})
+        await get_storage().update_data({"ad": json_dict})
 
     def __init__(self):
         self._ad = None
@@ -34,17 +35,15 @@ class _AdProxy:
 
 
 class CompanyInfoProxy(_AdProxy):
-
     async def __aenter__(self) -> CompanyInfo:
         ad = await self.ad
         return ad.company_info
 
 
 class VacancyProxy(_AdProxy):
-
     async def __aenter__(self) -> Vacancy:
-        storage_data = await storage().get_data()
-        current_vacancy_num = storage_data[CreateAdKeys.CURRENT_VACANCY_NUM]
+        storage_data = await get_storage().get_data()
+        current_vacancy_num = storage_data[Keys.VACANCY_NUM]
         ad = await self.ad
 
         if len(ad.vacancies) < current_vacancy_num:
@@ -54,14 +53,12 @@ class VacancyProxy(_AdProxy):
 
 
 class ExtraInfoProxy(_AdProxy):
-
     async def __aenter__(self) -> ExtraInfo:
         ad = await self.ad
         return ad.extra_info
 
 
 class AdProxy(_AdProxy):
-
     @staticmethod
     def company_info():
         return CompanyInfoProxy()

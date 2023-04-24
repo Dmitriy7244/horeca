@@ -1,10 +1,10 @@
 from api import texts
-from viber import dp, FSMContext, SendMessageOnConversationStarted
+from viber import FSMContext, dp, StartResponse
 
 from assets import kbs
 
 
-@dp.conversation_started_handler(state="*")
+@dp.START
 async def _(_, state: FSMContext):
     await state.finish()
-    return SendMessageOnConversationStarted(texts.ABOUT_US, reply_markup=kbs.MAIN)
+    return StartResponse(texts.ABOUT_US, kbs.MAIN)

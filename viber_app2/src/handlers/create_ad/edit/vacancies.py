@@ -1,44 +1,41 @@
-from .... import api0
-from .... import kbs as kb
-from .... import texts
-from ....conversations.fill_ad import FillAd
-from ....loader import dp
+from viber import dp, Message, FSMContext
 
-Conv = FillAd.fill_vacancy
+from assets import kbs, CreateAdStates
+from lib import (
+    ask_vacancy_title,
+    ask_work_experience,
+    ask_salary,
+    ask_schedule,
+    ask_working_hours,
+)
+
+Kb = kbs.EditVacancy
 
 
-@dp.message_handler(state=FillAd.preview_post)
-async def ask_new_title(_):
-    questions = {
-        kb.ChangeVacancy.TITLE:
-            api0.Question(
-                Conv.title,
-                texts.enter_vac_title,
-            ),
+def on(button: str):
+    return dp.text(button).state(CreateAdStates.EDIT)
 
-        kb.ChangeVacancy.WORK_EXPERIENCE:
-            api0.Question(
-                Conv.work_experience,
-                texts.enter_work_experience,
-            ),
 
-        kb.ChangeVacancy.SALARY:
-            api0.Question(
-                Conv.salary,
-                texts.enter_salary,
-            ),
+@on(Kb.TITLE)
+def _(msg: Message, state: FSMContext):
+    return ask_vacancy_title(msg, state)
 
-        kb.ChangeVacancy.SCHEDULE:
-            api0.Question(
-                Conv.schedule,
-                texts.enter_schedule,
-            ),
 
-        kb.ChangeVacancy.WORKING_HOURS:
-            api0.Question(
-                Conv.working_hours,
-                texts.enter_working_hours,
-            ),
-    }
+@on(Kb.WORK_EXPERIENCE)
+def _(msg: Message):
+    return ask_work_experience(msg)
 
-    await api0.ask_for_text_or_skip(questions)
+
+@on(Kb.SALARY)
+def _(msg: Message):
+    return ask_salary(msg)
+
+
+@on(Kb.SCHEDULE)
+def _(msg: Message):
+    return ask_schedule(msg)
+
+
+@on(Kb.WORKING_HOURS)
+def _(msg: Message):
+    return ask_working_hours(msg)

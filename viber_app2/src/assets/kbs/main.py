@@ -1,16 +1,17 @@
-from api import (
-    SUPPORT_URL,
-    OUR_SITE_URL,
-    PRICES,
-    texts,
-    config,
-)
 from viber import (
     CallbackButton,
     UrlButton,
     InlineKeyboard,
     ReplyKeyboard,
     ContactRequestButton,
+)
+
+from api import (
+    SUPPORT_URL,
+    OUR_SITE_URL,
+    PRICES,
+    texts,
+    config,
 )
 
 BACK_BUTTON = texts.BACK

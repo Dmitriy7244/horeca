@@ -2,12 +2,17 @@
 name = ""
 version = ""
 description = ""
-authors = [{ name = "levch", email = "levchenko.d.a1998@gmail.com" }]
+authors = []
 dependencies = [
-    "motor>=3.1.2",
 ]
 requires-python = ">=3.10"
 license = { text = "MIT" }
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "-e file:///${PROJECT_ROOT}/../api#egg=api",
+    "-e file:///D:/Projects/Modules/async-viber#egg=async-viber",
+]
 
 [tool.pdm.scripts._]
 env = { PYTHONPATH = "src" }
@@ -15,10 +20,7 @@ env = { PYTHONPATH = "src" }
 [tool.pdm.scripts]
 ru = { cmd = "python src", env_file = "../viber-ru.env" }
 ua = { cmd = "python src", env_file = "../viber-ua.env" }
-test = { cmd = "python tests", env_file = "../viber-ru.env" }
+test = "python tests"
 
-[tool.pdm.dev-dependencies]
-dev = [
-    "-e file:///${PROJECT_ROOT}/../api#egg=api",
-    "-e file:///D:/Projects/Modules/async-viber#egg=async-viber",
-]
+[tool.ruff]
+ignore = ["F401"]

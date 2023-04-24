@@ -1,4 +1,4 @@
-from botty import dp, Message, reply
+from viber import dp, Message, reply
 
 from api import texts
 from assets import CreateAdStates
@@ -15,7 +15,6 @@ def _(msg: Message):
 
 @dp.PHOTO.state(STATE)
 async def _(msg: Message):
-    await msg.answer_chat_action("typing")
     photo = await crop_photo(msg)
     async with AdProxy.extra_info() as extra_info:
         extra_info.photo = photo

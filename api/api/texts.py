@@ -83,6 +83,7 @@ class Texts:
     PAYMENT_SUCCESS = _[77]
     NEW_ORDER = _[78]
     ABOUT_US = _[79]
+    HIDDEN_URL = _[80]
 
 
 texts = Texts()

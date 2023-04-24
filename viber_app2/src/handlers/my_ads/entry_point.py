@@ -1,20 +1,18 @@
-from viber import types
+from aiogram_tools.context import callback_query as cquery, user, message
 
-from ... import api0
+from ... import api
 from ... import kbs as kb
 from ...loader import dp
-from src.utils import repr_ad
+from ...utils.repr import repr_ad
 
 
-@dp.message_handler(button=kb.Main.MY_ADS)
-async def send_my_ads_menu(msg: types.Message):
-    order = api0.orders.get_paid_order(msg.from_user.id, order_index=0)
+@dp.callback_query_handler(button=kb.Main.MY_ADS)
+async def send_my_ads_menu(_):
+    order = api.orders.get_paid_order(user.id, order_index=0)
 
     if order is None:
-        return await msg.answer('У вас еще нет объявлений')
+        return await cquery.answer("У вас еще нет объявлений")
 
-    await msg.answer_picture(
-        order.ad.extra_info.photo,
-        repr_ad(order.ad),
-        reply_markup=kb.MyAdsMenu(order.id, order_index=0)
+    await message.edit_text(
+        repr_ad(order.ad), reply_markup=kb.MyAdsMenu(order.id, order_index=0)
     )

@@ -62,20 +62,21 @@ summary = "Timeout context manager for asyncio programs"
 
 [[package]]
 name = "async-viber"
-version = "0.1.0"
+version = "0.1.1"
 requires_python = ">=3.10"
 editable = true
 path = "D:/Projects/Modules/async-viber"
 summary = ""
 dependencies = [
     "aiogram>=2.25.1",
+    "motor>=3.1.2",
     "parsenv>=0.1.3",
 ]
 
 [[package]]
 name = "attrs"
-version = "23.1.0"
-requires_python = ">=3.7"
+version = "22.2.0"
+requires_python = ">=3.6"
 summary = "Classes Without Boilerplate"
 
 [[package]]
@@ -249,7 +250,7 @@ dependencies = [
 
 [metadata]
 lock_version = "4.1"
-content_hash = "sha256:6473c7e096459dede614ece1efcb53e16c577603f42e6800e39d6e2e2961e09b"
+content_hash = "sha256:f07dd5fbd1745db59b46268d84dabfd2635b8e66a9c880fb141d296e9464ccfb"
 
 [metadata.files]
 "aiogram 2.25.1" = [
@@ -353,9 +354,9 @@ content_hash = "sha256:6473c7e096459dede614ece1efcb53e16c577603f42e6800e39d6e2e2
     {url = "https://files.pythonhosted.org/packages/54/6e/9678f7b2993537452710ffb1750c62d2c26df438aa621ad5fa9d1507a43a/async-timeout-4.0.2.tar.gz", hash = "sha256:2163e1640ddb52b7a8c80d0a67a08587e5d245cc9c553a74a847056bc2976b15"},
     {url = "https://files.pythonhosted.org/packages/d6/c1/8991e7c5385b897b8c020cdaad718c5b087a6626d1d11a23e1ea87e325a7/async_timeout-4.0.2-py3-none-any.whl", hash = "sha256:8ca1e4fcf50d07413d66d1a5e416e42cfdf5851c981d679a09851a6853383b3c"},
 ]
-"attrs 23.1.0" = [
-    {url = "https://files.pythonhosted.org/packages/97/90/81f95d5f705be17872843536b1868f351805acf6971251ff07c1b8334dbb/attrs-23.1.0.tar.gz", hash = "sha256:6279836d581513a26f1bf235f9acd333bc9115683f14f7e8fae46c98fc50e015"},
-    {url = "https://files.pythonhosted.org/packages/f0/eb/fcb708c7bf5056045e9e98f62b93bd7467eb718b0202e7698eb11d66416c/attrs-23.1.0-py3-none-any.whl", hash = "sha256:1f28b4522cdc2fb4256ac1a020c78acf9cba2c6b461ccd2c126f3aa8e8335d04"},
+"attrs 22.2.0" = [
+    {url = "https://files.pythonhosted.org/packages/21/31/3f468da74c7de4fcf9b25591e682856389b3400b4b62f201e65f15ea3e07/attrs-22.2.0.tar.gz", hash = "sha256:c9227bfc2f01993c03f68db37d1d15c9690188323c067c641f1a35ca58185f99"},
+    {url = "https://files.pythonhosted.org/packages/fb/6e/6f83bf616d2becdf333a1640f1d463fef3150e2e926b7010cb0f81c95e88/attrs-22.2.0-py3-none-any.whl", hash = "sha256:29e95c7f6778868dbd49170f98f8818f78f3dc5e0e37c0b1f474e3561b240836"},
 ]
 "babel 2.9.1" = [
     {url = "https://files.pythonhosted.org/packages/17/e6/ec9aa6ac3d00c383a5731cc97ed7c619d3996232c977bb8326bcbb6c687e/Babel-2.9.1.tar.gz", hash = "sha256:bc0c176f9f6a994582230df350aa6e05ba2ebe4b3ac317eab29d9be5d2768da0"},

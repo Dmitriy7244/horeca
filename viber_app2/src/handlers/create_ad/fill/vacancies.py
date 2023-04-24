@@ -1,114 +1,72 @@
-import re
+from api import texts
+from viber import dp, Message, FSMContext, reply, State
 
-from viber import types
-from viber.dispatcher import FSMContext
-
-from models.storage import CreateAdKeys
-from .... import api0
-from .... import kbs as kb
-from .... import texts
-from ....conversations.fill_ad import FillAd as FillAdConv
-from ....loader import dp
-from src.utils import misc as funcs
-from src.utils import AdProxy
-
-Conv = FillAdConv.fill_vacancy
-send_next_or_ad_preview_message = api0.make_next_or_ad_preview_message_func(Conv.next)
-
-
-@dp.message_handler(button=kb.VacancyAmount.ANY_NUM, state=FillAdConv.select_vacancies_amount)
-async def process_vacancies_num(message: types.Message, button: dict, state: FSMContext):
-    vacancies_num = int(button['num'])
-    await state.update_data({
-        CreateAdKeys.VACANCIES_AMOUNT: vacancies_num,
-        CreateAdKeys.CURRENT_VACANCY_NUM: 1,
-    })
-    await Conv.first()
-    await message.answer(texts.vac_num.format(1))
-    await message.answer(texts.enter_vac_title)
+from assets import VacancyStates as States, Keys
+from core import check_for_digits
+from lib import (
+    AdProxy,
+    ask_work_experience,
+    ask_salary,
+    ask_schedule,
+    ask_working_hours,
+    ask_vacancy_title,
+    check_edit_mode,
+    ask_extra_info,
+)
 
 
-@dp.message_handler(state=Conv.title)
-async def process_title(message: types.Message):
-    title = message.text
+def on(state: State):
+    return dp.TEXT.state(state)
 
+
+@on(States.TITLE)
+async def _(msg: Message, state: FSMContext):
     async with AdProxy.vacancy() as vacancy:
-        vacancy.title = title
-
-    await send_next_or_ad_preview_message(
-        message.answer(texts.enter_work_experience),
-    )
+        vacancy.title = msg.text
+    await check_edit_mode(msg, state)
+    await ask_work_experience(msg)
 
 
-@dp.message_handler(state=Conv.work_experience)
-async def process_work_experience(message: types.Message):
-    work_experience = funcs.uncapitalize(message.text)
-
+@on(States.WORK_EXPERIENCE)
+async def _(msg: Message, state: FSMContext):
     async with AdProxy.vacancy() as vacancy:
-        vacancy.work_experience = work_experience
-
-    await send_next_or_ad_preview_message(
-        message.answer(texts.enter_salary),
-    )
+        vacancy.work_experience = msg.text
+    await check_edit_mode(msg, state)
+    await ask_salary(msg)
 
 
-@dp.message_handler(state=Conv.salary)
-async def process_salary(message: types.Message):
-    salary = funcs.uncapitalize(message.text)
-
-    if not re.search(r'\d', salary):
-        return await message.reply(texts.must_be_integer)
-
+@on(States.SALARY)
+async def _(msg: Message, state: FSMContext):
+    await check_for_digits(msg)
     async with AdProxy.vacancy() as vacancy:
-        vacancy.salary = salary
-
-    await send_next_or_ad_preview_message(
-        message.answer(texts.enter_schedule),
-    )
+        vacancy.salary = msg.text
+    await check_edit_mode(msg, state)
+    await ask_schedule(msg)
 
 
-@dp.message_handler(state=Conv.schedule)
-async def process_schedule(message: types.Message):
-    schedule = message.text
-
-    if not re.search(r'\d', schedule):
-        return await message.reply(texts.must_be_integer)
-
+@on(States.SCHEDULE)
+async def _(msg: Message, state: FSMContext):
+    await check_for_digits(msg)
     async with AdProxy.vacancy() as vacancy:
-        vacancy.schedule = schedule
-
-    await send_next_or_ad_preview_message(
-        message.answer(texts.enter_working_hours),
-    )
+        vacancy.schedule = msg.text
+    await check_edit_mode(msg, state)
+    await ask_working_hours(msg)
 
 
-@dp.message_handler(state=Conv.working_hours)
-async def process_working_hours(message: types.Message, state: FSMContext):
-    storage = state
-
-    working_hours = funcs.uncapitalize(message.text)
-
-    if not re.search(r'\d', working_hours):
-        return await message.reply(texts.must_be_integer)
-
+@on(States.WORKING_HOURS)
+async def _(msg: Message, state: FSMContext):
+    await check_for_digits(msg)
     async with AdProxy.vacancy() as vacancy:
-        vacancy.working_hours = working_hours
+        vacancy.working_hours = msg.text
+    await check_edit_mode(msg, state)
 
-    async def ask_next_vacancy_or_extra_info():
-        storage_data = await storage.get_data()
-        current_vacancy_num = storage_data[CreateAdKeys.CURRENT_VACANCY_NUM]
+    session = await state.get_data()
+    vacancy_num = session[Keys.VACANCY_NUM]
 
-        if current_vacancy_num < storage_data[CreateAdKeys.VACANCIES_AMOUNT]:
-            await storage.update_data({CreateAdKeys.CURRENT_VACANCY_NUM: current_vacancy_num + 1})
-            await Conv.first()
-            await message.answer(texts.vac_num.format(current_vacancy_num + 1))
-            await message.answer(texts.enter_vac_title)
-        else:
-            await FillAdConv.fill_extra_info.first()
-            await message.answer(texts.vacancies_are_filled)
-            await message.answer(texts.enter_additional_info, reply_markup=kb.Miss())
+    if vacancy_num < session[Keys.VACANCY_AMOUNT]:
+        vacancy_num += 1
+        await state.update_data({Keys.VACANCY_NUM: vacancy_num})
+        return await ask_vacancy_title(msg, state)
 
-    await send_next_or_ad_preview_message(
-        ask_next_vacancy_or_extra_info(),
-        next_state=False,
-    )
+    await reply(msg, texts.VACANCIES_FILLED)
+    await ask_extra_info(msg)
