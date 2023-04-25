@@ -14,6 +14,7 @@ from .main import (
     EditOtherInfo,
     Invoice,
     ApproveAd,
+    MyAdsMenu,
 )
 
 MAIN = Main()

@@ -1,7 +1,7 @@
 from deps import dp, Message, FSMContext
 
 from assets import CreateAdStates, kbs, Keys
-from lib import AdProxy, ask_ad_edit
+from lib import AdProxy, ask_ad_edit, set_edit_mode
 
 
 def on(button: str):
@@ -21,5 +21,5 @@ def _(msg: Message, state: FSMContext):
 async def callback(msg: Message, state: FSMContext, option: bool):
     async with AdProxy.extra_info() as extra_info:
         extra_info.duplicate = option
-    await state.update_data({Keys.EDIT_MODE: True})
+    await set_edit_mode(state)
     await ask_ad_edit(msg)

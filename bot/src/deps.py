@@ -22,6 +22,7 @@ if VIBER_MODE:
         FSMContext,
         ask,
         get_photo_url,
+        CallbackQuery as Query,
     )
 else:
     from botty import (
@@ -43,7 +44,10 @@ else:
         FSMContext,
         ask,
         get_photo_url,
+        Query,
     )
+
+Event = Message | Query
 
 __all__ = [
     "run",
@@ -65,4 +69,6 @@ __all__ = [
     "ask",
     "VIBER_MODE",
     "get_photo_url",
+    "Query",
+    "Event",
 ]

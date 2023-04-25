@@ -15,7 +15,7 @@ dependencies = [
 
 [[package]]
 name = "aiogram-ext"
-version = "0.1.9"
+version = "0.1.11"
 requires_python = ">=3.10"
 summary = ""
 dependencies = [
@@ -326,9 +326,9 @@ content_hash = "sha256:f01adf12b260a0b47b8c8e3a913be257a222fe2b5fe34b1fe023bcb27
     {url = "https://files.pythonhosted.org/packages/c1/68/1c41d0245849af98250058dd1f702c56025c9fb4e19fe07158283852bbc0/aiogram-2.25.1-py3-none-any.whl", hash = "sha256:7bb770cd0459f1dbaea00578bf13fb2e6a1812f22adf94a988c11a7c0d5f33e1"},
     {url = "https://files.pythonhosted.org/packages/c1/6b/adbb9409f7af5deaeb461e76a553ae1640f86dd60ae3ca5939abb03dd844/aiogram-2.25.1.tar.gz", hash = "sha256:59ad78fc0ebbef1fd471c15778a4594b60117e0d7373bc2ce7bcd192074d527d"},
 ]
-"aiogram-ext 0.1.9" = [
-    {url = "https://files.pythonhosted.org/packages/5d/17/79b86eaebbc4ca2cbc2e0a293ab47facc92ace64c602da43bbe9f7010c1f/aiogram-ext-0.1.9.tar.gz", hash = "sha256:180c16a6c1f53345890af649ece7383b0e2846e5f8a6ba3c182d91e9e9cd4d38"},
-    {url = "https://files.pythonhosted.org/packages/c7/58/8b60d30a3806b097e0cbdd4502e4979907f25bc02dfe2feff6c93d6d800d/aiogram_ext-0.1.9-py3-none-any.whl", hash = "sha256:5e7ec132bb0609e881c6303567ea3974940d8a91a0d80cfea81ec31e1e8ca0ad"},
+"aiogram-ext 0.1.11" = [
+    {url = "https://files.pythonhosted.org/packages/92/9d/ed5c20bd4e30ce0e8465ac04e660bb3bac29b787e0a891c1c31115614277/aiogram-ext-0.1.11.tar.gz", hash = "sha256:523595b98f311e2ece879fa4c96ec63c8f0a726b26ff474d99b4c9633a2b452f"},
+    {url = "https://files.pythonhosted.org/packages/99/0d/4fc6b64a30cd9b86044b3fb2bbb6cd7a307358b0354ce4a7cf332cce0c13/aiogram_ext-0.1.11-py3-none-any.whl", hash = "sha256:9e889ce42649f02c44a6f91ec3f07aa532f6a485e9a34bc06aaf9d25c2bb7331"},
 ]
 "aiohttp 3.8.4" = [
     {url = "https://files.pythonhosted.org/packages/03/e7/84b65e341b1f45753fea51158d8a9522e57a5ae804acbc6dc34edf07cea0/aiohttp-3.8.4-cp39-cp39-musllinux_1_1_aarch64.whl", hash = "sha256:bca5f24726e2919de94f047739d0a4fc01372801a3672708260546aa2601bf57"},

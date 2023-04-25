@@ -64,7 +64,7 @@ class Order(Document):
     app_id: str = StringField()  # TODO
     notified: bool = BooleanField()
 
-    paid: bool = BooleanField(default=False, db_field="paid_up")
+    paid: bool = BooleanField(default=False)  # TODO
     approved: bool = BooleanField(default=False)
     pinned: bool = BooleanField()
     final_ad_text: str | None = StringField()

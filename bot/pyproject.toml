@@ -23,7 +23,7 @@ tg-ru = { cmd = "python src", env_file = "../tg-ru.env" }
 tg-ua = { cmd = "python src", env_file = "../tg-ua.env" }
 viber-ru = { cmd = "python src", env_file = "../viber-ru.env" }
 viber-ua = { cmd = "python src", env_file = "../viber-ua.env" }
-test = { cmd = "python tests", env_file = "../ru.env" }
+test = { cmd = "python tests", env_file = "../tg-ru.env" }
 
 [tool.ruff]
 ignore = ["F401"]

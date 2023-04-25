@@ -6,7 +6,7 @@ import mongoengine as me
 
 
 class Document(me.Document):
-    meta = {'abstract': True}
+    meta = {"abstract": True}
 
     @classmethod
     def get_doc(cls, _id: str | ObjectId):

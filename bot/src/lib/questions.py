@@ -5,7 +5,7 @@ from api.repr import repr_ad
 
 from assets import kbs, CreateAdStates, VacancyStates, Keys
 from deps import Message, reply, ReplyKeyboard, FSMContext, ask, VIBER_MODE
-from .misc import check_pinning_availability
+from .helpers import get_min_pin_date
 from .storage_proxies import AdProxy
 
 
@@ -73,9 +73,9 @@ def ask_photo(msg: Message):
 
 async def ask_pin_option(msg: Message):
     text = texts.ASK_PIN_OPTION
-    pin_after = await check_pinning_availability()
-    if pin_after > time.time():
-        text = "\n" + texts.PIN_DELAY.format(repr_timestamp_as_date(pin_after))
+    min_pin_date = await get_min_pin_date()
+    if min_pin_date > time.time():
+        text = "\n" + texts.PIN_DELAY.format(repr_timestamp_as_date(min_pin_date))
     await ask(CreateAdStates.PIN_OPTION, msg, text, kbs.PIN_OPTION)
 
 

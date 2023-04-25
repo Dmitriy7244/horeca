@@ -53,3 +53,18 @@ def make_invoice(ad: Ad) -> Invoice:
 
 async def get_invoice_url(order: Order, bot_url: str) -> str:
     return await merchant.get_invoice_url(order.str_id, order.price, bot_url)
+
+
+def get_min_pin_date(channel_id: int) -> int:
+    filters = {"approved": True, "channel_id": channel_id}
+    until_dates = [o.pin_until for o in Order.find_docs(**filters)]
+    return max(until_dates) if until_dates else 0
+
+
+def get_paid_order(user_id: int, index=0) -> Order | None:
+    filters = {"user_id": str(user_id), "paid": True}
+    orders = Order.find_docs(**filters)
+    try:
+        return orders[index]
+    except IndexError:
+        return None

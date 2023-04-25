@@ -1,9 +1,9 @@
 import json
 
 from api.models import Ad, CompanyInfo, Vacancy, ExtraInfo
-from deps import Dispatcher
 
 from assets import Keys
+from deps import Dispatcher
 
 
 def get_storage():

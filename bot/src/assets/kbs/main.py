@@ -127,9 +127,11 @@ class EditOtherInfo(ReplyKeyboard):
 
 
 class Invoice(InlineKeyboard):
+    CANCEL = CallbackButton(texts.CANCEL, '/start')
+
     def __init__(self, url: str):
         button = UrlButton(texts.PAY, url)
-        super().__init__(button)
+        super().__init__(button, self.CANCEL)
 
 
 class ApproveAd(InlineKeyboard):
@@ -138,3 +140,21 @@ class ApproveAd(InlineKeyboard):
     def __init__(self, order_id: str):
         button = self.BUTTON.format(order_id=order_id)
         super().__init__(button)
+
+
+class MyAdsMenu(InlineKeyboard):
+    BACK_TO_MENU = CallbackButton(texts.BACK_TO_MENU)
+    REORDER = CallbackButton(texts.REORDER, "reorder:{id}")
+    NEXT = CallbackButton("{}", "next-order:{index}")
+
+    row_width = 3
+
+    def __init__(self, order_id: str, order_index: int = 0):
+        buttons = [
+            self.BACK_TO_MENU,
+            self.NEXT.format("➡️", index=order_index + 1),
+        ]
+        if order_index > 0:
+            buttons = [self.NEXT.format("⬅️", index=order_index - 1), *buttons]
+        super().__init__(*buttons)
+        self.add(self.REORDER.format(id=order_id))

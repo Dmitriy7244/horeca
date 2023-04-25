@@ -3,12 +3,12 @@
 - Replace storage proxies
 - Pin option delay note
 - Viber's `*5*гр` instead *5* гр
+- Migrate orders
 
 # Checks
 
-- tg-ru
-  - create_ad
+- tg-ru +
+  - create_ad +
     - create +
-    - invoice -
-    - menu on end
-  - my_ads -
+    - invoice +
+  - my_ads +

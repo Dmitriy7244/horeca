@@ -3,4 +3,5 @@ from . import (
     entry,
     edit,
     invoice,
+    cancel,
 )

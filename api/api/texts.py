@@ -89,6 +89,11 @@ class Texts:
     BAD_KB_OPTION = _[83]
     PROCESS_PHOTO = _[84]
     ORDER_CREATED = _[85]
+    CANCEL = _[86]
+    NO_MY_ADS = _[87]
+    REORDER = _[88]
+    BACK_TO_MENU = _[89]
+    NO_MORE_ADS = _[90]
 
 
 texts = Texts()
