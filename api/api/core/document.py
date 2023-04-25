@@ -21,8 +21,8 @@ class Document(me.Document):
         return list(cls.objects(**kwargs))
 
     @property
-    def id(self) -> str:
-        return str(super().id)
+    def str_id(self) -> str:
+        return str(self.pk)
 
 
 DocT = TypeVar("DocT", bound=Document)

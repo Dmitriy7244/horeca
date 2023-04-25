@@ -26,6 +26,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "anyio"
+version = "3.6.2"
+requires_python = ">=3.6.2"
+summary = "High level compatibility layer for multiple asynchronous event loop implementations"
+dependencies = [
+    "idna>=2.8",
+    "sniffio>=1.1",
+]
+
+[[package]]
 name = "async-timeout"
 version = "4.0.2"
 requires_python = ">=3.6"
@@ -71,6 +81,36 @@ requires_python = ">=3.7"
 summary = "A list-like structure which implements collections.abc.MutableSequence"
 
 [[package]]
+name = "h11"
+version = "0.14.0"
+requires_python = ">=3.7"
+summary = "A pure-Python, bring-your-own-I/O implementation of HTTP/1.1"
+
+[[package]]
+name = "httpcore"
+version = "0.17.0"
+requires_python = ">=3.7"
+summary = "A minimal low-level HTTP client."
+dependencies = [
+    "anyio<5.0,>=3.0",
+    "certifi",
+    "h11<0.15,>=0.13",
+    "sniffio==1.*",
+]
+
+[[package]]
+name = "httpx"
+version = "0.24.0"
+requires_python = ">=3.7"
+summary = "The next generation HTTP client."
+dependencies = [
+    "certifi",
+    "httpcore<0.18.0,>=0.15.0",
+    "idna",
+    "sniffio",
+]
+
+[[package]]
 name = "i-texts"
 version = "0.1.1"
 requires_python = ">=3.10"
@@ -85,6 +125,17 @@ name = "idna"
 version = "3.4"
 requires_python = ">=3.5"
 summary = "Internationalized Domain Names in Applications (IDNA)"
+
+[[package]]
+name = "img-host"
+version = "0.1.2"
+requires_python = ">=3.10"
+summary = ""
+dependencies = [
+    "httpx>=0.24.0",
+    "parsenv>=0.1.3",
+    "pillow>=9.5.0",
+]
 
 [[package]]
 name = "mongoengine"
@@ -103,7 +154,7 @@ summary = "multidict implementation"
 
 [[package]]
 name = "parsenv"
-version = "0.1.3"
+version = "0.1.4"
 requires_python = ">=3.10"
 summary = ""
 
@@ -156,6 +207,12 @@ requires_python = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
 summary = "Python 2 and 3 compatibility utilities"
 
 [[package]]
+name = "sniffio"
+version = "1.3.0"
+requires_python = ">=3.7"
+summary = "Sniff out which async library your code is running under"
+
+[[package]]
 name = "typing-extensions"
 version = "4.5.0"
 requires_python = ">=3.7"
@@ -179,7 +236,7 @@ dependencies = [
 
 [metadata]
 lock_version = "4.1"
-content_hash = "sha256:08dbd24b842be5c7bac9e4816d559c3064c1d6231359f236a54c0fb0a34bd5f7"
+content_hash = "sha256:9560af00f9d523dd16dfb5a2db7de74b6bb75abd1273d7796c7883dcde0265a6"
 
 [metadata.files]
 "aiohttp 3.8.4" = [
@@ -274,6 +331,10 @@ content_hash = "sha256:08dbd24b842be5c7bac9e4816d559c3064c1d6231359f236a54c0fb0a
 "aiosignal 1.3.1" = [
     {url = "https://files.pythonhosted.org/packages/76/ac/a7305707cb852b7e16ff80eaf5692309bde30e2b1100a1fcacdc8f731d97/aiosignal-1.3.1-py3-none-any.whl", hash = "sha256:f8376fb07dd1e86a584e4fcdec80b36b7f81aac666ebc724e2c090300dd83b17"},
     {url = "https://files.pythonhosted.org/packages/ae/67/0952ed97a9793b4958e5736f6d2b346b414a2cd63e82d05940032f45b32f/aiosignal-1.3.1.tar.gz", hash = "sha256:54cd96e15e1649b75d6c87526a6ff0b6c1b0dd3459f43d9ca11d48c339b68cfc"},
+]
+"anyio 3.6.2" = [
+    {url = "https://files.pythonhosted.org/packages/77/2b/b4c0b7a3f3d61adb1a1e0b78f90a94e2b6162a043880704b7437ef297cad/anyio-3.6.2-py3-none-any.whl", hash = "sha256:fbbe32bd270d2a2ef3ed1c5d45041250284e31fc0a4df4a5a6071842051a51e3"},
+    {url = "https://files.pythonhosted.org/packages/8b/94/6928d4345f2bc1beecbff03325cad43d320717f51ab74ab5a571324f4f5a/anyio-3.6.2.tar.gz", hash = "sha256:25ea0d673ae30af41a0c442f81cf3b38c7e79fdc7b60335a4c14e05eb0947421"},
 ]
 "async-timeout 4.0.2" = [
     {url = "https://files.pythonhosted.org/packages/54/6e/9678f7b2993537452710ffb1750c62d2c26df438aa621ad5fa9d1507a43a/async-timeout-4.0.2.tar.gz", hash = "sha256:2163e1640ddb52b7a8c80d0a67a08587e5d245cc9c553a74a847056bc2976b15"},
@@ -448,6 +509,18 @@ content_hash = "sha256:08dbd24b842be5c7bac9e4816d559c3064c1d6231359f236a54c0fb0a
     {url = "https://files.pythonhosted.org/packages/fa/a1/d0822eb2f827f209c8fcf19ff1c9eb30ae08e25b710cf432b1013ea23429/frozenlist-1.3.3-cp311-cp311-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:9309869032abb23d196cb4e4db574232abe8b8be1339026f489eeb34a4acfd91"},
     {url = "https://files.pythonhosted.org/packages/fd/b8/9ed4ed37b2c3269660a86a10a09b2fe49dbbd6973ac684804ece7b51b63f/frozenlist-1.3.3-cp310-cp310-musllinux_1_1_aarch64.whl", hash = "sha256:924620eef691990dfb56dc4709f280f40baee568c794b5c1885800c3ecc69816"},
 ]
+"h11 0.14.0" = [
+    {url = "https://files.pythonhosted.org/packages/95/04/ff642e65ad6b90db43e668d70ffb6736436c7ce41fcc549f4e9472234127/h11-0.14.0-py3-none-any.whl", hash = "sha256:e3fe4ac4b851c468cc8363d500db52c2ead036020723024a109d37346efaa761"},
+    {url = "https://files.pythonhosted.org/packages/f5/38/3af3d3633a34a3316095b39c8e8fb4853a28a536e55d347bd8d8e9a14b03/h11-0.14.0.tar.gz", hash = "sha256:8f19fbbe99e72420ff35c00b27a34cb9937e902a8b810e2c88300c6f0a3b699d"},
+]
+"httpcore 0.17.0" = [
+    {url = "https://files.pythonhosted.org/packages/41/16/c809655d32fd93e688b9e2a1aaba1008118369d1eda00818f6f65eb509f8/httpcore-0.17.0.tar.gz", hash = "sha256:cc045a3241afbf60ce056202301b4d8b6af08845e3294055eb26b09913ef903c"},
+    {url = "https://files.pythonhosted.org/packages/6c/39/05ebe30333ec66bba849d3c25c85d759b94c43bb03b2222de051c50d4390/httpcore-0.17.0-py3-none-any.whl", hash = "sha256:0fdfea45e94f0c9fd96eab9286077f9ff788dd186635ae61b312693e4d943599"},
+]
+"httpx 0.24.0" = [
+    {url = "https://files.pythonhosted.org/packages/4e/c1/692013f1e6115a061a14f6c7d05947515a1eb7b85ef6e9bf0ffbf0e92738/httpx-0.24.0-py3-none-any.whl", hash = "sha256:447556b50c1921c351ea54b4fe79d91b724ed2b027462ab9a329465d147d5a4e"},
+    {url = "https://files.pythonhosted.org/packages/ae/23/f7beaf11a8b95fc173b8979c4bfd23ea7711c5ebd458d657d24a59df7e9f/httpx-0.24.0.tar.gz", hash = "sha256:507d676fc3e26110d41df7d35ebd8b3b8585052450f4097401c9be59d928c63e"},
+]
 "i-texts 0.1.1" = [
     {url = "https://files.pythonhosted.org/packages/8e/1f/da115700d204c092235810b75f91a79a8afadf67df5c2e991e1895ef025b/i-texts-0.1.1.tar.gz", hash = "sha256:145a6654dfb6cf72154a5455d655be8cf883b0ca89b4d4c064db3b9b6d7eeec8"},
     {url = "https://files.pythonhosted.org/packages/d3/20/6a5134e541ee51b646587221a3f96dd0daf8b87aba09aef3fc2ed01a778b/i_texts-0.1.1-py3-none-any.whl", hash = "sha256:9a2c8e30e1331ad025d9b91fa303df52870bd27b709f29d951b5d6d77f13f023"},
@@ -455,6 +528,10 @@ content_hash = "sha256:08dbd24b842be5c7bac9e4816d559c3064c1d6231359f236a54c0fb0a
 "idna 3.4" = [
     {url = "https://files.pythonhosted.org/packages/8b/e1/43beb3d38dba6cb420cefa297822eac205a277ab43e5ba5d5c46faf96438/idna-3.4.tar.gz", hash = "sha256:814f528e8dead7d329833b91c5faa87d60bf71824cd12a7530b5526063d02cb4"},
     {url = "https://files.pythonhosted.org/packages/fc/34/3030de6f1370931b9dbb4dad48f6ab1015ab1d32447850b9fc94e60097be/idna-3.4-py3-none-any.whl", hash = "sha256:90b77e79eaa3eba6de819a0c442c0b4ceefc341a7a2ab77d7562bf49f425c5c2"},
+]
+"img-host 0.1.2" = [
+    {url = "https://files.pythonhosted.org/packages/21/38/15a25eb48b18cffd58f9977702fd6f8dfab080db9500325a282dd765f07b/img_host-0.1.2-py3-none-any.whl", hash = "sha256:166fe911131b593963ba645bc39ea8b57ced0643dc2c282e3264629eae2d7634"},
+    {url = "https://files.pythonhosted.org/packages/6a/0b/a5b1bc05b4e62a5ae130c122289f4211aebce428c79d5e9ceebda07da59d/img-host-0.1.2.tar.gz", hash = "sha256:9e42e54969b2db89eebc69b3b6897fed034563db2e13c6283de3ece8104c0e17"},
 ]
 "mongoengine 0.27.0" = [
     {url = "https://files.pythonhosted.org/packages/0a/16/4fac4a2f18b4a9b4c9010cf6e961868de93b78d136e415b69739abc169ca/mongoengine-0.27.0-py3-none-any.whl", hash = "sha256:c3523b8f886052f3deb200b3218bcc13e4b781661e3bea38587cc936c80ea358"},
@@ -536,9 +613,9 @@ content_hash = "sha256:08dbd24b842be5c7bac9e4816d559c3064c1d6231359f236a54c0fb0a
     {url = "https://files.pythonhosted.org/packages/fc/5b/0a4205a1248fb152f596a03c971c6ef1585d0c98e56b6886dc35d084e366/multidict-6.0.4-cp311-cp311-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:7d18748f2d30f94f498e852c67d61261c643b349b9d2a581131725595c45ec6c"},
     {url = "https://files.pythonhosted.org/packages/fe/0c/8469202f8f4b0e65816f91c3febc4bda7316c995b59ecdf3b15c574f7a24/multidict-6.0.4-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:cc8e1d0c705233c5dd0c5e6460fbad7827d5d36f310a0fadfd45cc3029762258"},
 ]
-"parsenv 0.1.3" = [
-    {url = "https://files.pythonhosted.org/packages/9f/05/28a03171c06778042055ccfa9ed4d075e27602fb420d94cba8c46cc5daa5/parsenv-0.1.3.tar.gz", hash = "sha256:0da77e8e0e4947da33914af537f2b435f0cda22a6d6ce967e59451d7bfa5248d"},
-    {url = "https://files.pythonhosted.org/packages/e4/4c/bcd655dbc0ac59104ac13f17de6753f5793b9211120a415ae334ffa8b7ad/parsenv-0.1.3-py3-none-any.whl", hash = "sha256:0b16297030e40dab9b19eaabc7035f9b2430d25cf2a97f967d99bb06c1a74668"},
+"parsenv 0.1.4" = [
+    {url = "https://files.pythonhosted.org/packages/d2/12/dc0340e307126c586bed05c3b032b873ef011e1ddf2d12352a30d55e6ffc/parsenv-0.1.4.tar.gz", hash = "sha256:4bd860185ef995a8b491a58dacd392c3906a92c5e8b98dc0988c4689fe1cd7b1"},
+    {url = "https://files.pythonhosted.org/packages/dc/8c/2c83e6b5df699feae2853b689fdc9339b378d5acfd499d1d16fc5e80dc32/parsenv-0.1.4-py3-none-any.whl", hash = "sha256:e332853ac2bb49e9a1ef6675be6b40f57bcf00815cf157bbee44ca21ce1ac380"},
 ]
 "pillow 9.5.0" = [
     {url = "https://files.pythonhosted.org/packages/00/d5/4903f310765e0ff2b8e91ffe55031ac6af77d982f0156061e20a4d1a8b2d/Pillow-9.5.0.tar.gz", hash = "sha256:bf548479d336726d7a0eceb6e767e179fbde37833ae42794602631a070d630f1"},
@@ -771,6 +848,10 @@ content_hash = "sha256:08dbd24b842be5c7bac9e4816d559c3064c1d6231359f236a54c0fb0a
 "six 1.16.0" = [
     {url = "https://files.pythonhosted.org/packages/71/39/171f1c67cd00715f190ba0b100d606d440a28c93c7714febeca8b79af85e/six-1.16.0.tar.gz", hash = "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"},
     {url = "https://files.pythonhosted.org/packages/d9/5a/e7c31adbe875f2abbb91bd84cf2dc52d792b5a01506781dbcf25c91daf11/six-1.16.0-py2.py3-none-any.whl", hash = "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"},
+]
+"sniffio 1.3.0" = [
+    {url = "https://files.pythonhosted.org/packages/c3/a0/5dba8ed157b0136607c7f2151db695885606968d1fae123dc3391e0cfdbf/sniffio-1.3.0-py3-none-any.whl", hash = "sha256:eecefdce1e5bbfb7ad2eeaabf7c1eeb404d7757c379bd1f7e5cce9d8bf425384"},
+    {url = "https://files.pythonhosted.org/packages/cd/50/d49c388cae4ec10e8109b1b833fd265511840706808576df3ada99ecb0ac/sniffio-1.3.0.tar.gz", hash = "sha256:e60305c5e5d314f5389259b7f22aaa33d8f7dee49763119234af3755c55b9101"},
 ]
 "typing-extensions 4.5.0" = [
     {url = "https://files.pythonhosted.org/packages/31/25/5abcd82372d3d4a3932e1fa8c3dbf9efac10cc7c0d16e78467460571b404/typing_extensions-4.5.0-py3-none-any.whl", hash = "sha256:fb33085c39dd998ac16d1431ebc293a8b3eedd00fd4a32de0ff79002c19511b4"},

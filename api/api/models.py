@@ -61,7 +61,7 @@ class Order(Document):
     ad: Ad = EmbeddedDocumentField(Ad)
     price: int = IntField()
     channel_id: int = IntField()
-    utm: str = StringField()  # TODO
+    app_id: str = StringField()  # TODO
     notified: bool = BooleanField()
 
     paid: bool = BooleanField(default=False, db_field="paid_up")

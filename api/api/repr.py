@@ -2,17 +2,16 @@ import re
 
 from . import models
 from .texts import texts
-from .helpers import safe_html
+from .helpers import safe_html, uncapitalize
 
 
 def repr_company_info(info: models.CompanyInfo):
+    address = uncapitalize(info.address)
     if info.city != info.region:
-        address = f"{info.city}, {info.address}"
-    else:
-        address = info.address
+        address = f"{info.city}, {address}"
 
     return texts.COMPANY_INFO_REPR.format(
-        type=info.type,
+        type=uncapitalize(info.type),
         name=info.name,
         address=address,
     )
@@ -25,10 +24,10 @@ def repr_vacancy(vacancy: models.Vacancy):
 
     return texts.VACANCY_REPR.format(
         title=vacancy.title,
-        work_experience=vacancy.work_experience,
-        salary=salary,
+        work_experience=uncapitalize(vacancy.work_experience),
+        salary=uncapitalize(salary),
         schedule=schedule,
-        working_hours=working_hours,
+        working_hours=uncapitalize(working_hours),
     )
 
 
@@ -48,7 +47,7 @@ def repr_ad(ad: models.Ad, with_photo=True):
         vacancies="\n\n".join([repr_vacancy(v) for v in ad.vacancies]),
         extra_info=repr_extra_info(ad.extra_info, with_photo),
     )
-    return safe_html(text.replace("\n" * 2, "\n"))
+    return safe_html(text.replace("\n" * 3, "\n" * 2))
 
 
 def repr_invoice(invoice: models.Invoice):

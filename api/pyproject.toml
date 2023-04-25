@@ -11,6 +11,7 @@ dependencies = [
     "aiohttp>=3.8.4",
     "pillow>=9.5.0",
     "pydantic>=1.10.7",
+    "img-host>=0.1.2",
 ]
 requires-python = ">=3.10"
 readme = "README.md"

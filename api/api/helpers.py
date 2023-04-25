@@ -3,11 +3,11 @@ from datetime import datetime
 from time import time
 
 from .config import PRICES, APP_ID
-from .models import Order, Ad, Invoice
 from .merchant import merchant
+from .models import Order, Ad, Invoice
 
 
-def safe_html(text: str) -> str:  # TODO
+def safe_html(text: str) -> str:
     """Escape "<" and ">" symbols that are not a part of a tag."""
     return re.sub(
         pattern="<(?!(/|b>|i>|u>|s>|tg-spoiler>|a>|a href=|code>|pre>|code class=))",
@@ -36,7 +36,7 @@ def make_order(ad: Ad, channel_id: int, user_id: int, invoice: Invoice) -> Order
         date=time(),
         price=invoice.total_price,
         channel_id=channel_id,
-        utm=APP_ID,
+        app_id=APP_ID,
     )
     return order.save()
 
@@ -52,4 +52,4 @@ def make_invoice(ad: Ad) -> Invoice:
 
 
 async def get_invoice_url(order: Order, bot_url: str) -> str:
-    return await merchant.get_invoice_url(str(order.id), order.price, bot_url)
+    return await merchant.get_invoice_url(order.str_id, order.price, bot_url)

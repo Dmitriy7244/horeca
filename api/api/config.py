@@ -11,7 +11,7 @@ ADMIN_GROUP = env.get_int("ADMIN_GROUP")
 APP_URL = env.get("APP_URL")
 APP_ID = env.get("APP_ID")
 PAYMENT_ENDPOINT = "/payment"
-PAYMENT_URL = APP_URL + PAYMENT_ENDPOINT
+PAYMENT_URL = env.get("PAYMENT_URL")
 
 
 class PRICES:

@@ -84,6 +84,11 @@ class Texts:
     NEW_ORDER = _[78]
     ABOUT_US = _[79]
     HIDDEN_URL = _[80]
+    PHOTO_TOO_NARROW = _[81]
+    PHOTO_UPLOAD_ERROR = _[82]
+    BAD_KB_OPTION = _[83]
+    PROCESS_PHOTO = _[84]
+    ORDER_CREATED = _[85]
 
 
 texts = Texts()

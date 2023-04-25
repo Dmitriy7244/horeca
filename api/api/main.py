@@ -1,7 +1,9 @@
 import re
 from datetime import datetime
 
-from .config import MAX_ANSWER_LEN
+import img_host
+
+from .config import MAX_ANSWER_LEN, AD_PHOTO_RATIO
 from .texts import texts
 
 
@@ -36,8 +38,13 @@ def check_answer_len(text: str):
         raise ApiError(texts.ANSWER_LEN_ERROR)
 
 
-def crop_photo(url: str) -> str:  # TODO
-    return url and "https://telegra.ph/file/334f0f0dc80e933f61a8c.jpg"
+async def crop_photo(url: str) -> str:
+    try:
+        return await img_host.reupload(url, AD_PHOTO_RATIO)
+    except img_host.ImageTooNarrow:
+        raise ApiError(texts.PHOTO_TOO_NARROW)
+    except img_host.UploadError:
+        raise ApiError(texts.PHOTO_UPLOAD_ERROR)
 
 
 def check_for_digits(text: str):
