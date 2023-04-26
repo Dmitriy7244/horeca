@@ -134,14 +134,6 @@ class Invoice(InlineKeyboard):
         super().__init__(button, self.CANCEL)
 
 
-class ApproveAd(InlineKeyboard):
-    BUTTON = CallbackButton("✅", "ApproveAd:{order_id}")
-
-    def __init__(self, order_id: str):
-        button = self.BUTTON.format(order_id=order_id)
-        super().__init__(button)
-
-
 class MyAdsMenu(InlineKeyboard):
     BACK_TO_MENU = CallbackButton(texts.BACK_TO_MENU)
     REORDER = CallbackButton(texts.REORDER, "reorder:{id}")

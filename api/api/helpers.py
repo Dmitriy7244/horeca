@@ -2,9 +2,9 @@ import re
 from datetime import datetime
 from time import time
 
-from .config import PRICES, APP_ID
+from .config import PRICES, APP_ID, APP_URL
 from .merchant import merchant
-from .models import Order, Ad, Invoice
+from .models import Order, Ad, Invoice, Webhook
 
 
 def safe_html(text: str) -> str:
@@ -68,3 +68,12 @@ def get_paid_order(user_id: int, index=0) -> Order | None:
         return orders[index]
     except IndexError:
         return None
+
+
+def get_webhook_url(order: Order) -> str:
+    wh = Webhook.get_doc(order.app_id)
+    return wh.url
+
+
+def set_webhook():
+    Webhook(app_id=APP_ID, url=APP_URL).save()

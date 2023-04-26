@@ -74,8 +74,13 @@ class Order(Document):
     posts_dates: list[int] = ListField(IntField())
 
 
-class CreateAdKeys:
+class CreateAdKeys:  # TODO: check and remove
     VACANCY_AMOUNT = "vacancy_amount"
     CURRENT_VACANCY_NUM = "current_vacancy_num"
     EDIT_MODE = "edit_mode"
     CURRENT_ORDER_ID = "current_order_id"
+
+
+class Webhook(Document):
+    app_id: str = StringField(primary_key=True)
+    url: str = StringField()

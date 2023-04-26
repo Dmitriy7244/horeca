@@ -9,8 +9,8 @@ class Document(me.Document):
     meta = {"abstract": True}
 
     @classmethod
-    def get_doc(cls, _id: str | ObjectId):
-        return cls.find_doc(id=_id)
+    def get_doc(cls, key: str | ObjectId):
+        return cls.find_doc(pk=key)
 
     @classmethod
     def find_doc(cls: type[DocT], **kwargs) -> DocT | None:

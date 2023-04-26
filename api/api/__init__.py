@@ -8,6 +8,7 @@ from .config import (
     APP_URL,
     ADMIN_IDS,
     ADMIN_GROUP,
+    APP_ID,
 )
 from .helpers import (
     uncapitalize,
@@ -18,6 +19,8 @@ from .helpers import (
     get_invoice_url,
     get_min_pin_date,
     get_paid_order,
+    get_webhook_url,
+    set_webhook,
 )
 from .loader import logger
 from .main import (
@@ -29,7 +32,7 @@ from .main import (
     parse_post_date,
 )
 from .merchant import merchant
-from .models import Order, Ad, Invoice
+from .models import Order, Ad, Invoice, Webhook
 from .payment import on_payment, PaymentError
 from .repr import repr_invoice, repr_ad
 from .texts import texts
