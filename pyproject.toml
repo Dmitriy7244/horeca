@@ -1,0 +1,36 @@
+[project]
+name = ""
+version = ""
+description = ""
+authors = []
+dependencies = [
+    "i-texts>=0.2.0",
+    "ext-mongo>=0.4.0",
+    "cloudipsp>=1.0.4",
+    "pillow>=9.5.0",
+    "img-host>=0.1.2",
+    "parsenv>=0.2.2",
+    "pydantic>=1.10.7",
+    "aiogram-ext>=0.6.0",
+]
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "-e file:///D:/Projects/Modules/async-viber#egg=async-viber",
+]
+
+[tool.pdm.scripts._]
+env = { PYTHONPATH = "." }
+
+[tool.pdm.scripts]
+tg-ru = { cmd = "python apps/main", env_file = "envs/tg-ru.env" }
+tg-ua = { cmd = "python apps/main", env_file = "envs/tg-ua.env" }
+viber-ru = { cmd = "python apps/main", env_file = "envs/viber-ru.env" }
+viber-ua = { cmd = "python apps/main", env_file = "envs/viber-ua.env" }
+admin = { cmd = "python apps/admin", env_file = "envs/admin.env" }
+test = { cmd = "python scripts/test.py", env_file = "envs/tg-ru.env" }
+
+[tool.ruff]
+ignore = ["F401"]

@@ -1,3 +1,2 @@
 *.env
-.idea/
-.pdm.toml
+.pdm-python
