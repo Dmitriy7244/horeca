@@ -67,10 +67,8 @@ summary = "Timeout context manager for asyncio programs"
 
 [[package]]
 name = "async-viber"
-version = "0.1.1"
+version = "0.2.0"
 requires_python = ">=3.10"
-editable = true
-path = "D:/Projects/Modules/async-viber"
 summary = ""
 dependencies = [
     "aiogram>=2.25.1",
@@ -337,7 +335,7 @@ dependencies = [
 [metadata]
 lock_version = "4.2"
 groups = ["default", "dev"]
-content_hash = "sha256:b653894ebf743af76fe87c837697d50433e13f2754b2bf4324c59b73c82296e5"
+content_hash = "sha256:c76b8075777ffbba2a66d41e69373ceca340b2f8778079a5c2284cf26ad8042c"
 
 [metadata.files]
 "aiogram 2.25.1" = [
@@ -448,6 +446,10 @@ content_hash = "sha256:b653894ebf743af76fe87c837697d50433e13f2754b2bf4324c59b73c
 "async-timeout 4.0.2" = [
     {url = "https://files.pythonhosted.org/packages/54/6e/9678f7b2993537452710ffb1750c62d2c26df438aa621ad5fa9d1507a43a/async-timeout-4.0.2.tar.gz", hash = "sha256:2163e1640ddb52b7a8c80d0a67a08587e5d245cc9c553a74a847056bc2976b15"},
     {url = "https://files.pythonhosted.org/packages/d6/c1/8991e7c5385b897b8c020cdaad718c5b087a6626d1d11a23e1ea87e325a7/async_timeout-4.0.2-py3-none-any.whl", hash = "sha256:8ca1e4fcf50d07413d66d1a5e416e42cfdf5851c981d679a09851a6853383b3c"},
+]
+"async-viber 0.2.0" = [
+    {url = "https://files.pythonhosted.org/packages/32/a8/3c3635f671a18ee2b10cb1ea4b43e81192f01a4a9d20fbb82522c057b74b/async-viber-0.2.0.tar.gz", hash = "sha256:0115c6907c0cee2606556e5ec40a72328f3572bc58b2777b8d800a8284b21587"},
+    {url = "https://files.pythonhosted.org/packages/8c/de/fce77e3a4669b98b61061767758c2692e94583e31a9812cbc34e71dcfaea/async_viber-0.2.0-py3-none-any.whl", hash = "sha256:464798a09b1a4bf6c384371995797c568890d23b7c280215ecda48eb7f610c14"},
 ]
 "attrs 23.1.0" = [
     {url = "https://files.pythonhosted.org/packages/97/90/81f95d5f705be17872843536b1868f351805acf6971251ff07c1b8334dbb/attrs-23.1.0.tar.gz", hash = "sha256:6279836d581513a26f1bf235f9acd333bc9115683f14f7e8fae46c98fc50e015"},

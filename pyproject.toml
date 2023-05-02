@@ -12,14 +12,10 @@ dependencies = [
     "parsenv>=0.2.2",
     "pydantic>=1.10.7",
     "aiogram-ext>=0.6.0",
+    "async-viber>=0.2.0",
 ]
 requires-python = ">=3.10"
 license = { text = "MIT" }
-
-[tool.pdm.dev-dependencies]
-dev = [
-    "-e file:///D:/Projects/Modules/async-viber#egg=async-viber",
-]
 
 [tool.pdm.scripts._]
 env = { PYTHONPATH = "." }
