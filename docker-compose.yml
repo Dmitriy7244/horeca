@@ -1,6 +1,26 @@
 services:
-  app:
+  tg-ru:
     build: .
     restart: always
-    environment:
-      TZ: "Europe/Kiev"
+    network_mode: host
+    command: pdm tg-ru
+  tg-ua:
+    build: .
+    restart: always
+    network_mode: host
+    command: pdm tg-ua
+  viber-ru:
+    build: .
+    restart: always
+    network_mode: host
+    command: pdm viber-ru
+  viber-ua:
+    build: .
+    restart: always
+    network_mode: host
+    command: pdm viber-ua
+  admin:
+    build: .
+    restart: always
+    network_mode: host
+    command: pdm admin

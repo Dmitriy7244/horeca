@@ -4,4 +4,4 @@ RUN pip install pdm
 COPY pyproject.toml pdm.lock ./
 RUN pdm install
 COPY . .
-CMD ". entrypoint.sh"
+ENV TZ="Europe/Kiev"
