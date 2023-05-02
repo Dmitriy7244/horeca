@@ -1,0 +1,6 @@
+services:
+  app:
+    build: .
+    restart: always
+    env:
+      TZ: "Europe/Kiev"

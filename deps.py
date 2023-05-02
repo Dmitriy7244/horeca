@@ -1,6 +1,6 @@
 import env
 
-VIBER_MODE = env.get_bool('VIBER_MODE', False)
+VIBER_MODE = env.get('PLATFORM') == "viber"
 
 if VIBER_MODE:
     from viber import (

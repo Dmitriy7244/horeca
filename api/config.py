@@ -22,17 +22,17 @@ class PRICES:
 
 
 class MERCHANT:
-    _ = "MERCHANT_"
-    ID = env.get_int(_ + "ID")
-    SECRET_KEY = env.get(_ + "SECRET_KEY")
+    with env.prefix("MERCHANT"):
+        ID = env.get_int("ID")
+        SECRET_KEY = env.get("SECRET_KEY")
 
 
 class MONGO:
-    _ = "MONGO_"
-    DB = env.get(_ + "DB")
-    HOST = env.get(_ + "HOST")
-    USER = env.get(_ + "USER", "root")
-    PASSWORD = env.get(_ + "PASSWORD")
+    with env.prefix("MONGO"):
+        DB = env.get("DB")
+        HOST = env.get("HOST")
+        USER = env.get("USER", "root")
+        PASSWORD = env.get("PASSWORD")
 
 
 class Region(BaseModel):
