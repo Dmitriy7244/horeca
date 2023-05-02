@@ -1,4 +1,4 @@
-from api.core import Document
+from mongo import Document
 from mongoengine import StringField, BooleanField
 
 
@@ -11,7 +11,7 @@ class Order(Document):
     utm: str = StringField()
 
 
-for order in Order.find_docs():
+for order in Order.find_all():
     order.paid = order.paid_up
     order.paid_up = None
 
