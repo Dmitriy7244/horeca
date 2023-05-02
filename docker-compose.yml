@@ -2,5 +2,5 @@ services:
   app:
     build: .
     restart: always
-    env:
+    environment:
       TZ: "Europe/Kiev"
