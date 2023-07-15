@@ -1,6 +1,14 @@
-from botty import reply, dp, Query
+from botty import Query, dp, reply
 
-from api import Order, approve_order, ADMIN_GROUP, texts, get_webhook_url, APPROVE_ENDPOINT, send_post
+from api import (
+    ADMIN_GROUP,
+    APPROVE_ENDPOINT,
+    Order,
+    approve_order,
+    get_webhook_url,
+    send_post,
+    texts,
+)
 from assets import kbs
 
 

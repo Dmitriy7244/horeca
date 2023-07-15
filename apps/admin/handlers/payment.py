@@ -1,15 +1,15 @@
-from aiohttp.web import Response, Request
+from aiohttp.web import Request, Response
 from botty import app, bot
 
 import api
 from api import (
-    get_webhook_url,
+    ADMIN_GROUP,
     PAYMENT_ENDPOINT,
     Order,
+    get_webhook_url,
+    make_ad_header,
     repr_ad,
-    ADMIN_GROUP,
     send_post,
-    make_ad_header
 )
 from assets import kbs
 
@@ -25,6 +25,7 @@ async def on_payment(req: Request) -> Response:
 async def notify_admins(order: Order):
     kb = kbs.ApproveOrder(order.str_id)
     await bot.send_message(ADMIN_GROUP, make_ad_header(order))
-    await bot.send_message(ADMIN_GROUP, repr_ad(order.ad), reply_markup=kb)
+    await bot.send_message(ADMIN_GROUP, order.final_ad_text, reply_markup=kb)
+
 
 app.router.add_post("/payment", on_payment)

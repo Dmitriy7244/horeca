@@ -1,8 +1,8 @@
 import re
 
 from . import models
+from .lib import safe_html, uncapitalize
 from .texts import texts
-from .helpers import safe_html, uncapitalize
 
 
 def repr_company_info(info: models.CompanyInfo):
