@@ -1,5 +1,5 @@
 from mongo import Document
-from mongoengine import StringField, BooleanField
+from mongoengine import BooleanField, StringField
 
 
 class Order(Document):
@@ -11,12 +11,30 @@ class Order(Document):
     utm: str = StringField()
 
 
-for order in Order.find_all():
-    order.paid = order.paid_up
-    order.paid_up = None
+count = 0
 
-    if order.created_from:
-        order.app_id = order.created_from.replace(".", "-")
-        order.created_from = None
 
-    order.save()
+def migrate_paid_field():
+    for order in Order.find_all():
+        if order.paid_up is None:
+            continue
+        order.paid = order.paid_up
+        order.paid_up = None
+        order.save()
+
+
+def migrate_create_from_field():
+    for order in Order.find_all():
+        # if order.created_from is None:
+        # continue
+        # order.app_id = order.created_from.replace(".", "-")
+        # order.created_from = None
+
+        if order.app_id == "telegram-ru":
+            order.app_id = "tg-ru"
+        if order.app_id == "telegram-ua":
+            order.app_id = "tg-ua"
+        order.save()
+
+
+migrate_create_from_field()
