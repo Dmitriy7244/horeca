@@ -1,18 +1,11 @@
-import asyncio
-from time import time
-
 from botty import Query, dp, reply
-from lib import notify_user, schedule_post
+from lib import notify_user
 
 from api import (
     ADMIN_GROUP,
-    APPROVE_ENDPOINT,
     Order,
-    Post,
     approve_order,
-    get_webhook_url,
     save_post,
-    send_post,
     texts,
 )
 from assets import kbs
