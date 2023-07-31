@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from mongo import Document, me, PrimaryKey
+from mongo import Document, PrimaryKey, me
 
 
 class CompanyInfo(me.EmbeddedDocument):
@@ -29,7 +29,9 @@ class ExtraInfo(me.EmbeddedDocument):
 
 
 class Ad(me.EmbeddedDocument):
-    company_info: CompanyInfo = me.EmbeddedDocumentField(CompanyInfo, default=CompanyInfo)
+    company_info: CompanyInfo = me.EmbeddedDocumentField(
+        CompanyInfo, default=CompanyInfo
+    )
     vacancies: list[Vacancy] = me.EmbeddedDocumentListField(Vacancy)
     extra_info: ExtraInfo = me.EmbeddedDocumentField(ExtraInfo, default=ExtraInfo)
 
@@ -43,6 +45,15 @@ class Invoice:
     @property
     def total_price(self):
         return sum([self.vacancies_price, self.pinning_price, self.duplicating_price])
+
+
+class Post(Document):
+    chat_id: int
+    text: str
+    pin_from: int | None
+    pin_until: int | None
+    publish_dates: list[int]
+    message_id: int | None
 
 
 class Order(Document):

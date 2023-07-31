@@ -14,7 +14,7 @@ from .config import (
 )
 from .lib import safe_html
 from .merchant import merchant
-from .models import Ad, Invoice, Order, Webhook
+from .models import Ad, Invoice, Order, Post, Webhook
 from .repr import repr_ad
 from .texts import texts
 
@@ -37,6 +37,18 @@ def approve_order(order: Order, final_ad_text: str):
     else:
         order.posts_dates = [post_date]
     order.save()
+    return order
+
+
+def save_post(order: Order):
+    post = Post()
+    post.chat_id = order.channel_id
+    post.text = order.final_ad_text
+    post.pin_from = order.pin_from
+    post.pin_until = order.pin_until
+    post.publish_dates = order.posts_dates
+    post.save()
+    return post
 
 
 def make_order(ad: Ad, channel_id: int, user_id: int, invoice: Invoice) -> Order:

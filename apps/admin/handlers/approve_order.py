@@ -1,11 +1,17 @@
+import asyncio
+from time import time
+
 from botty import Query, dp, reply
+from lib import notify_user, schedule_post
 
 from api import (
     ADMIN_GROUP,
     APPROVE_ENDPOINT,
     Order,
+    Post,
     approve_order,
     get_webhook_url,
+    save_post,
     send_post,
     texts,
 )
@@ -20,10 +26,6 @@ async def _(query: Query, button: dict):
         return await reply(query, texts.ORDER_NOT_FOUND)
     await query.message.edit_reply_markup()
     await query.answer(texts.ORDER_PUBLISHED)
-    approve_order(order, msg.html_text)
+    order = approve_order(order, msg.html_text)
+    save_post(order)
     await notify_user(order)
-
-
-def notify_user(order: Order):
-    url = get_webhook_url(order) + APPROVE_ENDPOINT
-    return send_post(url, params={"user_id": order.user_id})

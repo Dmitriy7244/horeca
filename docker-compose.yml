@@ -24,3 +24,8 @@ services:
     restart: always
     network_mode: host
     command: pdm admin
+  poster:
+    build: .
+    restart: always
+    network_mode: host
+    command: pdm poster

@@ -21,6 +21,7 @@ from .helpers import (
     make_invoice,
     make_order,
     repr_timestamp_as_date,
+    save_post,
     send_post,
     set_webhook,
 )
@@ -35,7 +36,7 @@ from .main import (
     parse_post_date,
 )
 from .merchant import merchant
-from .models import Ad, Invoice, Order, Webhook
+from .models import Ad, Invoice, Order, Webhook,Post
 from .payment import PaymentError, on_payment
 from .repr import repr_ad, repr_invoice
 from .texts import texts

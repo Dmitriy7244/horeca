@@ -13,6 +13,8 @@ dependencies = [
     "pydantic>=1.10.7",
     "aiogram-ext>=0.6.0",
     "async-viber>=0.2.0",
+    "pyTelegramBotAPI>=4.12.0",
+    "loguru>=0.7.0",
 ]
 requires-python = ">=3.10"
 license = { text = "MIT" }
@@ -25,6 +27,7 @@ tg-ru = { cmd = "python apps/main", env_file = "envs/tg-ru.env" }
 tg-ua = { cmd = "python apps/main", env_file = "envs/tg-ua.env" }
 viber-ru = { cmd = "python apps/main", env_file = "envs/viber-ru.env" }
 viber-ua = { cmd = "python apps/main", env_file = "envs/viber-ua.env" }
+poster = { cmd = "python apps/poster", env_file = "envs/admin.env" }
 admin = { cmd = "python apps/admin", env_file = "envs/admin.env" }
 test = { cmd = "python scripts/test.py", env_file = "envs/tg-ru.env" }
 
