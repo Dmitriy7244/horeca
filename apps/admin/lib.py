@@ -1,12 +1,8 @@
-import asyncio
-from time import time
 
-from botty import dp
 
 from api import (
     APPROVE_ENDPOINT,
     Order,
-    Post,
     get_webhook_url,
     send_post,
 )
