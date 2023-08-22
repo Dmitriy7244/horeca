@@ -15,7 +15,7 @@ dependencies = [
 
 [[package]]
 name = "aiogram-ext"
-version = "0.9.0"
+version = "0.10.0"
 requires_python = ">=3.10"
 summary = ""
 dependencies = [
@@ -73,7 +73,7 @@ summary = "Timeout context manager for asyncio programs"
 
 [[package]]
 name = "async-viber"
-version = "0.3.0"
+version = "0.4.0"
 requires_python = ">=3.10"
 summary = ""
 dependencies = [
@@ -390,9 +390,9 @@ content_hash = "sha256:9628bbf94d4ae2523bed682f9896671b3e028ab408d1f20902d67f5f6
     {url = "https://files.pythonhosted.org/packages/c1/68/1c41d0245849af98250058dd1f702c56025c9fb4e19fe07158283852bbc0/aiogram-2.25.1-py3-none-any.whl", hash = "sha256:7bb770cd0459f1dbaea00578bf13fb2e6a1812f22adf94a988c11a7c0d5f33e1"},
     {url = "https://files.pythonhosted.org/packages/c1/6b/adbb9409f7af5deaeb461e76a553ae1640f86dd60ae3ca5939abb03dd844/aiogram-2.25.1.tar.gz", hash = "sha256:59ad78fc0ebbef1fd471c15778a4594b60117e0d7373bc2ce7bcd192074d527d"},
 ]
-"aiogram-ext 0.9.0" = [
-    {url = "https://files.pythonhosted.org/packages/9b/a1/e97cadf5577fe6e341031ec13196f2fffa617197cfe948a28dbd6422a75e/aiogram-ext-0.9.0.tar.gz", hash = "sha256:eb5cf97c729cf26c72823d5c9874b4c89abc155736ef826314d0649e46eeee96"},
-    {url = "https://files.pythonhosted.org/packages/d9/d0/3d8685d3d65f4abc9b6b112f32e7f55aa0583ce01549f40ed2aa1f5a05e1/aiogram_ext-0.9.0-py3-none-any.whl", hash = "sha256:c7b48e11aa2f5d214a7e19952c0e7edae030d24a0ca9c7e59fd737d1bbb0e9eb"},
+"aiogram-ext 0.10.0" = [
+    {url = "https://files.pythonhosted.org/packages/67/6e/22a1715a4fe4a5bff05da22d5fd29a82c1fac26954a7b890f7f9eabd3880/aiogram-ext-0.10.0.tar.gz", hash = "sha256:591f31e6907dadd684c7fabaf21fdef39f040da95af91db1172a32d4b387f1b7"},
+    {url = "https://files.pythonhosted.org/packages/ac/0e/076fc91a15004adec7b7fb0acf9b5d05a24317184f6c3fd0428015dc062b/aiogram_ext-0.10.0-py3-none-any.whl", hash = "sha256:ab739dfa3a01ce74e3b313a246ea797ff0a38b69b64c47b5f56eef1f0c39b491"},
 ]
 "aiohttp 3.8.4" = [
     {url = "https://files.pythonhosted.org/packages/03/e7/84b65e341b1f45753fea51158d8a9522e57a5ae804acbc6dc34edf07cea0/aiohttp-3.8.4-cp39-cp39-musllinux_1_1_aarch64.whl", hash = "sha256:bca5f24726e2919de94f047739d0a4fc01372801a3672708260546aa2601bf57"},
@@ -499,9 +499,9 @@ content_hash = "sha256:9628bbf94d4ae2523bed682f9896671b3e028ab408d1f20902d67f5f6
     {url = "https://files.pythonhosted.org/packages/54/6e/9678f7b2993537452710ffb1750c62d2c26df438aa621ad5fa9d1507a43a/async-timeout-4.0.2.tar.gz", hash = "sha256:2163e1640ddb52b7a8c80d0a67a08587e5d245cc9c553a74a847056bc2976b15"},
     {url = "https://files.pythonhosted.org/packages/d6/c1/8991e7c5385b897b8c020cdaad718c5b087a6626d1d11a23e1ea87e325a7/async_timeout-4.0.2-py3-none-any.whl", hash = "sha256:8ca1e4fcf50d07413d66d1a5e416e42cfdf5851c981d679a09851a6853383b3c"},
 ]
-"async-viber 0.3.0" = [
-    {url = "https://files.pythonhosted.org/packages/d5/94/f09778cd62d050b599a8bcbde4064a27d0e761f430f42c38de65c7770827/async_viber-0.3.0-py3-none-any.whl", hash = "sha256:2c7978b3d1b77fb19c352ad615ead8f57e40fe6f8bfc9881c75b4662942d2291"},
-    {url = "https://files.pythonhosted.org/packages/df/8c/f3ca1d6e854151b52974e293d033e98a04bc8719185db14b3ca195cee098/async-viber-0.3.0.tar.gz", hash = "sha256:9ac96d98f10e391d352643afaf97d8025896cfedc6baf3164adb51dbf28786cf"},
+"async-viber 0.4.0" = [
+    {url = "https://files.pythonhosted.org/packages/54/bf/413b21589b2166b5c90b6c240a70122ade76d8ab9a5c2e47788ff4cd1383/async-viber-0.4.0.tar.gz", hash = "sha256:dfbe53dd6b5c45f60360a78a3ab206822caece04614d510dac8d4042a3a47d27"},
+    {url = "https://files.pythonhosted.org/packages/8f/2d/d933ee2e000e5458f69a14cbff2d33abbbb7f84fe5990be450bdf4ca762f/async_viber-0.4.0-py3-none-any.whl", hash = "sha256:ec8d3461c916f499fdc04969422e22e9071c81cfeba1319068b282dc77ff8498"},
 ]
 "attrs 23.1.0" = [
     {url = "https://files.pythonhosted.org/packages/97/90/81f95d5f705be17872843536b1868f351805acf6971251ff07c1b8334dbb/attrs-23.1.0.tar.gz", hash = "sha256:6279836d581513a26f1bf235f9acd333bc9115683f14f7e8fae46c98fc50e015"},
