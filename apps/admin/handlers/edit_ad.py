@@ -1,7 +1,8 @@
 from contextlib import suppress
 
+from botty import Message, TelegramAPIError, dp, reply
+
 from api import ADMIN_GROUP
-from botty import Message, reply, dp, TelegramAPIError
 
 
 @dp.TEXT.chat_id(ADMIN_GROUP).has_reply

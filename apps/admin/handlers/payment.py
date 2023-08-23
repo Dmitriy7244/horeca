@@ -28,4 +28,9 @@ async def notify_admins(order: Order):
     await bot.send_message(ADMIN_GROUP, order.final_ad_text, reply_markup=kb)
 
 
+# import asyncio
+# order = Order.get("64e5cb31c3c99e5727e09d24")
+# asyncio.run(notify_admins(order))
+
+
 app.router.add_post("/payment", on_payment)

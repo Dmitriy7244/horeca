@@ -23,11 +23,17 @@ def repr_timestamp_as_date(timestamp: int):
     return datetime.fromtimestamp(timestamp).strftime("%d.%m.%Y %H:%M")
 
 
+def get_min_pin_date(channel_id: int) -> int:
+    filters = {"paid": True, "channel_id": channel_id}
+    until_dates = [o.pin_until for o in Order.find_all(**filters) if o.pin_until]
+    return max(until_dates) if until_dates else 0
+
+
 def approve_order(order: Order, final_ad_text: str):
     order.approved = True
     order.final_ad_text = safe_html(final_ad_text)
     post_date = order.ad.extra_info.post_date or order.date
-    if order.ad.extra_info.pin:
+    if order.ad.extra_info.pin and order.pin_from is None:
         order.pin_from = get_min_pin_date(order.channel_id) or post_date
         order.pin_until = order.pin_from + PIN_DURATION
     if order.ad.extra_info.duplicate:
@@ -38,6 +44,12 @@ def approve_order(order: Order, final_ad_text: str):
         order.posts_dates = [post_date]
     order.save()
     return order
+
+
+# order = Order.find()
+# print(order.id)
+# print(approve_order(order, "123"))
+# print(get_min_pin_date(-1001398658451))
 
 
 def save_post(order: Order):
@@ -76,12 +88,6 @@ def make_invoice(ad: Ad) -> Invoice:
 
 async def get_invoice_url(order: Order, bot_url: str) -> str:
     return await merchant.get_invoice_url(order.str_id, order.price, bot_url)
-
-
-def get_min_pin_date(channel_id: int) -> int:
-    filters = {"paid": True, "channel_id": channel_id}
-    until_dates = [o.pin_until for o in Order.find_all(**filters) if o.pin_until]
-    return max(until_dates) if until_dates else 0
 
 
 def get_my_order(user_id: int, index=0) -> Order | None:
