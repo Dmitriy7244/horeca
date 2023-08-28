@@ -27,7 +27,7 @@ tg-ru = { cmd = "python apps/main", env_file = "envs/tg-ru.env" }
 tg-ua = { cmd = "python apps/main", env_file = "envs/tg-ua.env" }
 viber-ru = { cmd = "python apps/main", env_file = "envs/viber-ru.env" }
 viber-ua = { cmd = "python apps/main", env_file = "envs/viber-ua.env" }
-poster = { cmd = "python apps/poster", env_file = "envs/admin.env" }
+poster = { cmd = "python apps/poster", env_file = "envs/poster.env" }
 admin = { cmd = "python apps/admin", env_file = "envs/admin.env" }
 test = { cmd = "python scripts/test.py", env_file = "envs/tg-ru.env" }
 

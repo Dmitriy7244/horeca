@@ -8,7 +8,17 @@
     "**/Thumbs.db": true,
     "**/__pycache__": true,
     ".venv": true,
-    ".pdm-python": true
+    ".pdm-python": true,
+    "[!a]*/**": true,
+    "a[!p]*/**": true,
+    "ap[!p]*/**": true,
+    "app[!s]*/**": true,
+    "apps/[!p]*/**": true,
+    "apps/p[!o]*/**": true,
+    "apps/po[!s]*/**": true,
+    "apps/pos[!t]*/**": true,
+    "apps/post[!e]*/**": true,
+    "apps/poste[!r]*/**": true
   },
   "workspace.isHidden": true,
   "[python]": {

@@ -9,5 +9,6 @@ logger.info("Poster started")
 
 while True:
     for post in Post.find_all():
+        # print(post.to_dict())
         process_post(post)
         sleep(10)
