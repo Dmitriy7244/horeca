@@ -14,8 +14,8 @@ PostTaskCallback = Callable[[Post], None]
 def process_post(post: Post):
     time = get_time()
 
-    if post.publish_dates:
-        print(post.publish_dates, time, time >= post.publish_dates[0])
+    # if post.publish_dates:
+        # print(post.publish_dates, time, time >= post.publish_dates[0])
 
     if post.publish_dates and time >= post.publish_dates[0]:
         run_post_task(post, send_post)
