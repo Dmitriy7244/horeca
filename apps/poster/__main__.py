@@ -11,4 +11,4 @@ while True:
     for post in Post.find_all():
         # print(post.to_dict())
         process_post(post)
-        sleep(10)
+    sleep(10)
