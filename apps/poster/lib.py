@@ -3,7 +3,7 @@ from asyncio import get_event_loop, run
 from time import time as get_time
 from typing import Callable
 
-from loader import bot, viber_bot
+from loader import VIBER_CHAT_ID, bot, viber_bot
 from loguru import logger
 
 from api import Post
@@ -15,7 +15,7 @@ def process_post(post: Post):
     time = get_time()
 
     # if post.publish_dates:
-        # print(post.publish_dates, time, time >= post.publish_dates[0])
+    # print(post.publish_dates, time, time >= post.publish_dates[0])
 
     if post.publish_dates and time >= post.publish_dates[0]:
         run_post_task(post, send_post)
@@ -74,9 +74,6 @@ def send_viber_post(header: str, post: Post):
     text = re.sub("</b>", "*", text)
     send_viber_message(header)
     send_viber_picture(photo_url, text)
-
-
-VIBER_CHAT_ID = "VXMh1WXcHdyFRdes7oaIEg=="
 
 
 def send_viber_picture(url: str, text: str):

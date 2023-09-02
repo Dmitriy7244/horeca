@@ -33,6 +33,7 @@ def approve_order(order: Order, final_ad_text: str):
     order.approved = True
     order.final_ad_text = safe_html(final_ad_text)
     post_date = order.ad.extra_info.post_date or order.date
+    post_date = max(time(), post_date)
     if order.ad.extra_info.pin and order.pin_from is None:
         order.pin_from = get_min_pin_date(order.channel_id) or post_date
         order.pin_until = order.pin_from + PIN_DURATION
